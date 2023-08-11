@@ -24,7 +24,6 @@ class ImpressaoPersonalizadaController extends Controller
 
         self::setViewParam('tiposCartazes', $impressaoPersonalizadaDAO->getTiposCartazes());
         self::setViewParam('produtos', $impressaoPersonalizadaDAO->getProdutos());
-        self::setViewParam('totalParcelas', $impressaoPersonalizadaDAO->getTotalParcelas());
         self::setViewParam('filiais', $filiais);
 
         $this->render('impressaoPersonalizada/index');
@@ -39,12 +38,8 @@ class ImpressaoPersonalizadaController extends Controller
         try {
             $impressaoDAO = new ImpressaoPersonalizadaDAO();
 
-            $dadosDeflacao = $impressaoDAO->getDeflacao($_GET['quantidadeParcelasTotal']);
             $dadosProdutos = $impressaoDAO->getDescricaoProduto($_GET['idprodutoxy']);
             $dadosFilial = $impressaoDAO->getDadosFilial($_GET['idfilial']);
-
-            $valorPresente = ($_GET['valorAtual'] - ($_GET['valorAtual']  * ($dadosDeflacao['valor_deflacao']/ 100)));
-            $jurosComposto = number_format((pow(($_GET['valorAtual'] / $valorPresente), (1 / $_GET['quantidadeParcelasTotal'])) - 1) * 100, 2, '.', '');
             
             http_response_code(200);
 
@@ -65,8 +60,6 @@ class ImpressaoPersonalizadaController extends Controller
                 'tipo' => $_GET['tipo'],
                 'data_inicial' => $_GET['validoDe'],
                 'data_final' => $_GET['validoAte'],
-                'tipoPagamento' => $dadosDeflacao['tipo_pagamento'],
-                'juro_composto' => $jurosComposto,
                 'idfilial' => $_GET['idfilial'],
                 'tipoFormato' => $dadosFilial['tipo_formato'],
             ]);

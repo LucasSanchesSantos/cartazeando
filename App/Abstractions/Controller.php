@@ -83,9 +83,6 @@ abstract class Controller
         return [
             'usuario/index',
             'usuario/cadastro',
-            'deflacao/index',
-            'deflacao/cadastro',
-            'deflacao/edicao'
         ];
     }
 }

@@ -55,35 +55,6 @@ class ImpressaoPersonalizadaDAO extends DAO
                 ";
     }
 
-    public function getDeflacao(int $quantidadeParcelas): ?array
-    {
-        $sql = $this->getSqlDeflacao();
-
-        $parametro = ['quantidadeParcelas' => $quantidadeParcelas];
-
-        $resultado = $this->selectOneWithBindValue($sql,$parametro);
-
-        if (!$resultado) {
-            return null;
-        }
-
-        return $resultado;
-    }
-
-    public function getSqlDeflacao(): string
-    {
-        return 
-        "SELECT 
-            c.valor_deflacao
-            ,t.descricao as tipo_pagamento
-        FROM controle_deflacao c
-        left join tipo_pagamento t on t.id = c.id_tipo_pagamento
-        WHERE c.id_tipo_pagamento = 2
-        AND c.parcela_ate = :quantidadeParcelas
-        ";
-    }
-
-
     public function getDescricaoProduto(string $idprodutoxy): ?array
     {
         $sql = $this->getSqlDescricaoProduto();
@@ -120,30 +91,6 @@ class ImpressaoPersonalizadaDAO extends DAO
         AND id_grade_x = CAST(:idGradeX AS SIGNED)
         AND id_grade_y = CAST(:idGradeY AS SIGNED)
         GROUP BY 1,2,3,4,5,6
-        ";
-    }
-
-
-    public function getTotalParcelas(): ?array
-    {
-        $sql = $this->getSqlTotalParcelas();
-
-        $resultado = $this->selectWithBindValue($sql);
-
-        if (!$resultado) {
-            return null;
-        }
-
-        return $resultado;
-    }
-
-    public function getSqlTotalParcelas(): string
-    {
-        return 
-        "SELECT 
-            parcela_ate
-        FROM controle_deflacao c
-        WHERE id_tipo_pagamento = 2
         ";
     }
 

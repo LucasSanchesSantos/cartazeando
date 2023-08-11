@@ -32,9 +32,6 @@ class App
         define('DB_NAME', $_ENV['DB_NAME']);
         define('DB_DRIVER', $_ENV['DB_DRIVER']);
 
-        define('URL_API_GAZIN', $_ENV['URL_API_GAZIN']);
-        define('TOKEN_API_GAZIN', $_ENV['TOKEN_API_GAZIN']);
-
         $this->url();
     }
 

@@ -219,8 +219,6 @@ function gerarA4(dadosProdutoPromocao) {
             preco: { fontSize: 16, bold: true, alignment: 'right' },
             tipo: { fontSize: 16, alignment: 'right', margin: [0, 15, 0, 6] },
             validade: { fontSize: 9, alignment: 'right' },
-            jurosComposto: { fontSize: 9, alignment: 'right' },
-
         }
     };
 
@@ -253,7 +251,6 @@ function gerarA4(dadosProdutoPromocao) {
         let totalAPrazo = 'Total a prazo R$';
         tipo = tipo[produtoPromocao.tipo];
         let validade = `De ${dataInicial} até ${dataFinal}`;
-        let jurosComposto = `No CDC (GazinCred) taxa de ${produtoPromocao.juro_composto}% a.m.`;
 
 
         let produtoPromocaoContent = [
@@ -278,7 +275,6 @@ function gerarA4(dadosProdutoPromocao) {
             },
             { id: `tipo${id}`, text: tipo, style: 'tipo' },
             { id: `validade${id}`, text: validade, style: 'validade' },
-            { id: `jurosComposto${id}`, text: jurosComposto, style: 'jurosComposto' },  
 
         ];
 
@@ -297,12 +293,6 @@ function gerarA4(dadosProdutoPromocao) {
 
             produtoPromocaoContent.splice(indiceTotalAPrazo, 1);
         }
-
-        if (produtoPromocao.tipoFormato !== 'CDC') {
-            let indiceJurosComposto = produtoPromocaoContent.findIndex((obj) => obj.id === `jurosComposto{id}`);    
-            produtoPromocaoContent.splice(indiceJurosComposto, 1);
-        }
-    
 
         docDefinition.content.push(produtoPromocaoContent, { text: '', pageBreak: 'after' });
 
@@ -347,7 +337,6 @@ function gerarA3(dadosProdutoPromocao) {
             preco: { fontSize: 35, bold: true, alignment: 'right' },
             tipo: { fontSize: 35, alignment: 'right', margin: [0, 15, 0, 6] },
             validade: { fontSize: 12, alignment: 'right' },
-            jurosComposto: { fontSize: 12, alignment: 'right' },
         }
     };
 
@@ -380,7 +369,6 @@ function gerarA3(dadosProdutoPromocao) {
         let totalAPrazo = 'Total a prazo R$';
         tipo = tipo[produtoPromocao.tipo];
         let validade = `De ${dataInicial} até ${dataFinal}`;
-        let jurosComposto = `No CDC (GazinCred) taxa de ${produtoPromocao.juro_composto}% a.m.`;
         let produtoPromocaoContentPrimeiraPagina = [
             { text: '', margin: [0, 360, 0, 0]},
             { id: `idProduto${id}`, text: idProduto, style: 'idProduto' },
@@ -416,8 +404,6 @@ function gerarA3(dadosProdutoPromocao) {
             },
             { id: `tipo${id}`, text: tipo, style: 'tipo' },
             { id: `validade${id}`, text: validade, style: 'validade' },
-            { id: `jurosComposto${id}`, text: jurosComposto, style: 'jurosComposto' },  
-
         ];
 
         if (typeof produtoPromocao.de === 'undefined' || !produtoPromocao.de) {
@@ -434,11 +420,6 @@ function gerarA3(dadosProdutoPromocao) {
             let indiceTotalAPrazo = produtoPromocaoContentSegundaPagina.findIndex((obj) => obj.id === `totalAPrazo${id}`);
 
             produtoPromocaoContentSegundaPagina.splice(indiceTotalAPrazo, 1);
-        }
-
-        if (produtoPromocao.tipoFormato !== 'CDC') {
-            let indiceJurosComposto = produtoPromocaoContentSegundaPagina.findIndex((obj) => obj.id === `jurosComposto{id}`);    
-            produtoPromocaoContentSegundaPagina.splice(indiceJurosComposto, 1);
         }
 
         docDefinition.content.push(produtoPromocaoContentSegundaPagina, { text: '', pageBreak: 'after' });
