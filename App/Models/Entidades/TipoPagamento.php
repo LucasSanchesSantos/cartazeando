@@ -7,12 +7,12 @@ use App\Abstractions\Entity;
 class TipoPagamento extends Entity
 {
     protected int $id;
-    protected string $tipoPagamento;
+    protected string $descricao;
 
     public function __construct(array $tipoPagamento)
     {
         $this->setId($tipoPagamento['id']);
-        $this->setTipoPagamento($tipoPagamento['tipoPagamento']);
+        $this->setDescricao($tipoPagamento['descricao']);
     }
 
     public function getId(): int
@@ -27,14 +27,14 @@ class TipoPagamento extends Entity
         return $this;
     }
 
-    public function getTipoPagamento(): string
+    public function getDescricao(): string
     {
-        return $this->tipoPagamento;
+        return $this->descricao;
     }
 
-    private function setTipoPagamento(string $tipoPagamento): self
+    private function setDescricao(string $descricao): self
     {
-        $this->tipoPagamento = $tipoPagamento;
+        $this->descricao = $descricao;
 
         return $this;
     }

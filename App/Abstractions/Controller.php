@@ -83,6 +83,7 @@ abstract class Controller
         return [
             'usuario/index',
             'usuario/cadastro',
+            'tipoPagamento/index'
         ];
     }
 }

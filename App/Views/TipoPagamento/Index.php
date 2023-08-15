@@ -9,13 +9,14 @@
             <tr>
                 <th class="text-center align-middle">ID tipo pagamento</th>
                 <th class="text-center align-middle">Tipo pagamento</th>
+                <th class="text-center align-middle">Editar</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($this->getViewVar()['tipoPagamento'] as $tipoPagamento) { ?>
                 <tr>
-                    <td class="text-center align-middle"><?= $tipoPagamento['id_filial'] ?></td>
-                    <td class="text-center align-middle"><?= $tipoPagamento['numero_filial'] ?></td>
+                    <td class="text-center align-middle"><?= $tipoPagamento['id'] ?></td>
+                    <td class="text-center align-middle"><?= $tipoPagamento['descricao'] ?></td>
                     <td class="text-center align-middle">
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>tipoPagamento/edicao?id=<?= $tipoPagamento['id'] ?>">

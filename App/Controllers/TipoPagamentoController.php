@@ -45,14 +45,14 @@ class TipoPagamentoController extends Controller
         self::setViewParam('tiposFormato', $tipoFormatoDAO->listar());
         self::setViewParam('tiposPermissao', $tipoPermissaoDAO->listar());
 
-        $this->render('usuario/cadastrar');
+        $this->render('tipoPagamento/cadastrar');
     }
 
     public function cadastrar(): void
     {
         $tipoPagamento = new TipoPagamento([
             'id' => 0,
-            'tipo_pagamento' => strval($_POST['tipo_pagamento'])
+            'descricao' => strval($_POST['descricao'])
         ]);
 
         $tipoPagamentoDAO = new tipoPagamentoDAO();
@@ -60,12 +60,12 @@ class TipoPagamentoController extends Controller
         try {
             $tipoPagamentoDAO->cadastrar($tipoPagamento);
 
-            Sessao::gravaSucesso("Usuário cadastrado com sucesso!");
+            Sessao::gravaSucesso("Tipo de pagamento cadastrado com sucesso!");
+            $this->redirect('tipoPagamento', 'index');
         } catch (\Exception $e) {
-            Sessao::gravaErro("Erro ao cadastrar usuário.");
+            Sessao::gravaErro("Erro ao cadastrar tipo pagamento. Contate o suporte.");
+            $this->redirect('tipoPagamento', 'cadastro');
         }
-
-        $this->redirect('tipoPagamento', 'edicao');
     }
 
     public function editar(): void
@@ -79,9 +79,9 @@ class TipoPagamentoController extends Controller
         try {
             $tipoPagamentoDAO->editar($tipoPagamento);
 
-            Sessao::gravaSucesso("Usuário editado com sucesso!");
+            Sessao::gravaSucesso("Tipo de pagamento editado com sucesso!");
         } catch (\Exception $e) {
-            Sessao::gravaErro("Erro ao editar usuário.");
+            Sessao::gravaErro("Erro ao editar tipo de pagamento.");
         }
 
         $this->redirect('tipoPagamento', "edicao?id={$tipoPagamento->getId()}");
@@ -91,7 +91,7 @@ class TipoPagamentoController extends Controller
     {
         return [
             'id' => intval($_POST['id']),
-            'tipoPagamento' => intval($_POST['tipoPagamento']),
+            'descricao' => intval($_POST['descricao']),
         ];
     }
 

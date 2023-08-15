@@ -33,7 +33,7 @@ class TipoPagamentoDAO extends DAO
         $parametros = $tipoPagamento->toArray(true);
 
         return $this->insert(
-            'tipoPagamento',
+            'tipo_pagamento',
             $parametros
         );
     }

@@ -45,7 +45,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoPagamento/index"><i class="text-dark-blue bi bi-person-gear me-2"></i>Tipos de pagamentos</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoPagamento/index"><i class="text-dark-blue bi bi-gear-fill me-2"></i>Tipos de pagamentos</a>
                             </li>
                         <?php
                             }
