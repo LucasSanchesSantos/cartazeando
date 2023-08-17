@@ -25,14 +25,9 @@ class TipoPagamentoController extends Controller
 
     public function edicao(): void
     {
-        $usuarioLogado = Sessao::getUsuario();
-
-        $idUsuario = !empty($_GET['id']) && $usuarioLogado['id_tipo_permissao'] == TipoPermissao::ADMINISTRATIVO->value ?
-            intval($_GET['id']) : Sessao::getUsuario()['id'];
-
         $tipoPagamentoDAO = new TipoPagamentoDAO();
 
-        self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
+        self::setViewParam('tipoPagamento', $tipoPagamentoDAO->getDadosTipoPagamento($_GET['id']));
 
         $this->render('tipoPagamento/editar');
     }
@@ -91,7 +86,7 @@ class TipoPagamentoController extends Controller
     {
         return [
             'id' => intval($_POST['id']),
-            'descricao' => intval($_POST['descricao']),
+            'descricao' => strval($_POST['descricao']),
         ];
     }
 

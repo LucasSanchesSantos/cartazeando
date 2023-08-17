@@ -4,12 +4,12 @@
     <input type="hidden" id="id" name="id" value=<?= !empty($_GET['id']) ? intval($_GET['id']) : intval($tipoPagamento['id']) ?>>
 
         <div class="mb-3">
-            <label for="idFilial" class="form-label">ID</label>
-            <input type="number" class="form-control" id="idFilial" name="idFilial" value="<?= $this->viewVar['tipoPagamento']['id'] ?>" required>
+            <label class="form-label">ID</label>
+            <input type="number" class="form-control" id="id" name="id" value="<?= $this->viewVar['tipoPagamento']['id'] ?>" required>
         </div>
         <div class="mb-3">
-            <label for="numeroFilial" class="form-label">Tipo de pagamento</label>
-            <input type="number" class="form-control" id="numeroFilial" name="numeroFilial" value="<?= $this->viewVar['tipoPagamento']['tipoPagamento'] ?>" required>
+            <label class="form-label">Tipo de pagamento</label>
+            <input type="text" class="form-control" id="descricao" name="descricao" value="<?= $this->viewVar['tipoPagamento']['descricao'] ?>" required>
         </div>
     
         <div class="text-end">

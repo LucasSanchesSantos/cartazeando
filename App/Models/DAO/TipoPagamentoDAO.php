@@ -43,9 +43,37 @@ class TipoPagamentoDAO extends DAO
         $parametros = $tipoPagamento->toArray(true, ['id']);
 
         return $this->update(
-            'tipoPagamento',
+            'tipo_pagamento',
             $parametros,
             "id = {$tipoPagamento->getId()}"
         );
+    }
+
+
+    public function getDadosTipoPagamento(int $id): ?array
+    {
+        $sql = $this->getSqlTipoPagamento();
+
+        $parametro = [
+            'id' => $id
+        ];
+
+        $resultado = $this->selectOneWithBindValue($sql, $parametro);
+
+        if (!$resultado) {
+            return null;
+        }
+
+        return $resultado;
+    }
+
+    private function getSqlTipoPagamento(): string
+    {
+        return "SELECT
+                *
+            FROM
+                tipo_pagamento
+            WHERE id = :id    
+            ";
     }
 }

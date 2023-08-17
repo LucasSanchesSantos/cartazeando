@@ -4,7 +4,7 @@
 </div>
 
 <div class="table-responsive mt-2">
-    <table class="table table-hover" id="tipoPagamentosTable">
+    <table class="table table-hover" id="tipoPagamento">
         <thead>
             <tr>
                 <th class="text-center align-middle">ID tipo pagamento</th>
