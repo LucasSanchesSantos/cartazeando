@@ -132,7 +132,7 @@ function gerarA4(dadosProdutoPromocao) {
 
     let pdfDocGenerator = pdfMake.createPdf(docDefinition);
 
-    pdfDocGenerator.download('cartazin.pdf');
+    pdfDocGenerator.download('cartazeando.pdf');
 
     pdfMake.createPdf(docDefinition).getBase64(function (base64) {
         let pdfData = 'data:application/pdf;base64,' + base64;
@@ -263,7 +263,7 @@ function gerarA3(produtoPromocao) {
 
     let pdfDocGenerator = pdfMake.createPdf(docDefinition);
 
-    pdfDocGenerator.download('cartazin.pdf');
+    pdfDocGenerator.download('cartazeando.pdf');
 
     pdfMake.createPdf(docDefinition).getBase64(function (base64) {
         let pdfData = 'data:application/pdf;base64,' + base64;

@@ -24,7 +24,7 @@ class App
         define('PATH_JS', "{$_ENV['PROTOCOL_SSL']}{$_SERVER['HTTP_HOST']}/App/Views/JavaScript/");
         define('PATH_LOG', realpath('./') . '/log/');
 
-        define('TITLE', "CartaZin - Gestão de Cartazes do Varejo Gazin");
+        define('TITLE', "Cartazeando - Gestão de Cartazes");
 
         define('DB_HOST', $_ENV['DB_HOST']);
         define('DB_USER', $_ENV['DB_USER']);

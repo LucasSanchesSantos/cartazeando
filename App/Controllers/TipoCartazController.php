@@ -7,9 +7,7 @@ use App\Lib\Sessao;
 use App\Models\DAO\TipoCartazDAO;
 use App\Models\DAO\TipoFormatoDAO;
 use App\Models\DAO\TipoPermissaoDAO;
-use App\Models\DAO\UsuarioDAO;
 use App\Models\Entidades\TipoCartaz;
-use App\Models\Entidades\Usuario;
 
 class TipoCartazController extends Controller
 {
