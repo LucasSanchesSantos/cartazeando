@@ -6,8 +6,7 @@
                     <form class="w-100" action="<?= URL ?>login/logar" method="post">
                         <div class="card-body p-5 text-center">
                             <div class="mb-4">
-                                <h3>Cartazeando</h3>
-                                <h5>GESTÃO DE CARTAZES DO VAREJO GAZIN</h5>
+                                <img src="<?= PATH_IMG ?>cartazeando.png" width="70%" alt="">
                             </div>
 
                             <div class="form-outline mb-4">

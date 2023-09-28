@@ -5,7 +5,7 @@
                 <button class="navbar-toggler bg-white me-2 shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand fw-bold fs-4 m-0 d-flex align-middle" href="<?= URL ?>inicio"><img src="<?= PATH_IMG ?>cartazin.png" width="150px"></a>
+                <a class="navbar-brand fw-bold fs-4 m-0 d-flex align-middle" href="<?= URL ?>inicio"><img src="<?= PATH_IMG ?>cartazeando.png" width="150px"></a>
             </div>
             <div class="d-flex align-items-center">
                 <div class="btn-group">
@@ -49,7 +49,11 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus"></i>Tipo de cartaz</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus"></i> Tipo de cartaz</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>filial/index"><i class="text-dark-blue bi bi-shop"></i> Filiais</a>
                             </li>
                         <?php
                             }
