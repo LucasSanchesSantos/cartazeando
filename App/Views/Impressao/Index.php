@@ -1,4 +1,9 @@
 <div>
+    <div class="d-flex justify-content-end mb-2">
+        <button class="btn btn-dark-blue" type="button" onclick="atualizarPromocoes(<?= $usuario['id_filial']?>)">
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </div>
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid d-flex justify-content-between">
         <div class="d-flex">

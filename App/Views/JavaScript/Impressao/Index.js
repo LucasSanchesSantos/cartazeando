@@ -99,7 +99,7 @@ function atualizarCards(idFilialSessao) {
                 divPromocaoDe.appendChild(divPromocao);
                 divPromocaoDe.appendChild(divDe);
 
-                let divConteudoCard = getDivConteudoCard();
+                let divConteudoCard = getDivConteudoCard(idElemento);
 
                 divConteudoCard.appendChild(divImgInformacoesCheckbox);
                 divConteudoCard.appendChild(divPromocaoDe);
@@ -174,6 +174,18 @@ function selecionarTudo() {
     condicaoSelecionarTudo = !condicaoSelecionarTudo;
 }
 
+function selecionarCheckbox(idCheckbox) {
+    let checkbox = document.querySelector(`input[value="${idCheckbox}"]`);
+
+    if (checkbox.checked) {
+        checkbox.checked = false;
+
+        return;
+    }
+
+    checkbox.checked = true;
+}
+
 function impressao(tipoCartaz) {
     let checkboxesMarcados = document.querySelectorAll('input[type="checkbox"]:checked');
 
@@ -219,6 +231,8 @@ function gerarA4(dadosProdutoPromocao) {
             preco: { fontSize: 16, bold: true, alignment: 'right' },
             tipo: { fontSize: 16, alignment: 'right', margin: [0, 15, 0, 6] },
             validade: { fontSize: 9, alignment: 'right' },
+            jurosComposto: { fontSize: 9, alignment: 'right' },
+
         }
     };
 
@@ -242,16 +256,25 @@ function gerarA4(dadosProdutoPromocao) {
         };
         let dataInicial = moment(produtoPromocao.data_inicial, 'YYYY-MM-DD').format('DD/MM/YYYY');
         let dataFinal = moment(produtoPromocao.data_final, 'YYYY-MM-DD').format('DD/MM/YYYY');
+        let valorEntrada = 0;
+
+        if(produtoPromocao.tipo_prazo_promocao === 'Sem Entrada'){
+            valorEntrada = 0;
+        }
+        if(produtoPromocao.tipo_prazo_promocao === 'Com Entrada'){
+            valorEntrada = 1;
+        }
 
         let idProduto = `${produtoPromocao.id_produto}.${produtoPromocao.id_grade_x}.${produtoPromocao.id_grade_y}`;
         let descricao = produtoPromocao.produto;
         let variacao = `${produtoPromocao.cor} - ${produtoPromocao.voltagem}`;
         let de = `De R$${produtoPromocao.de}`;
-        let prazo = `${produtoPromocao.prazo_inicial} + ${produtoPromocao.prazo_final}X`;
+        let prazo = `${valorEntrada} + ${produtoPromocao.prazo_final}X`;
         let totalAPrazo = 'Total a prazo R$';
         tipo = tipo[produtoPromocao.tipo];
         let validade = `De ${dataInicial} até ${dataFinal}`;
-
+        let jurosComposto = `No CDC (GazinCred) taxa de ${produtoPromocao.juro_composto}% a.m.`;
+ 
 
         let produtoPromocaoContent = [
             { id: `idProduto${id}`, text: idProduto, style: 'idProduto' },
@@ -275,6 +298,7 @@ function gerarA4(dadosProdutoPromocao) {
             },
             { id: `tipo${id}`, text: tipo, style: 'tipo' },
             { id: `validade${id}`, text: validade, style: 'validade' },
+            { id: `jurosComposto${id}`, text: jurosComposto, style: 'jurosComposto' },  
 
         ];
 
@@ -294,6 +318,12 @@ function gerarA4(dadosProdutoPromocao) {
             produtoPromocaoContent.splice(indiceTotalAPrazo, 1);
         }
 
+        if (produtoPromocao.tipoFormato !== 'CDC') {
+            let indiceJurosComposto = produtoPromocaoContent.findIndex((obj) => obj.id === `jurosComposto{id}`);    
+            produtoPromocaoContent.splice(indiceJurosComposto, 1);
+        }
+    
+
         docDefinition.content.push(produtoPromocaoContent, { text: '', pageBreak: 'after' });
 
         id++;
@@ -303,7 +333,7 @@ function gerarA4(dadosProdutoPromocao) {
 
     let pdfDocGenerator = pdfMake.createPdf(docDefinition);
 
-    pdfDocGenerator.download('cartazeando.pdf');
+    pdfDocGenerator.download('cartazin.pdf');
 
     pdfMake.createPdf(docDefinition).getBase64(function (base64) {
         let pdfData = 'data:application/pdf;base64,' + base64;
@@ -337,6 +367,7 @@ function gerarA3(dadosProdutoPromocao) {
             preco: { fontSize: 35, bold: true, alignment: 'right' },
             tipo: { fontSize: 35, alignment: 'right', margin: [0, 15, 0, 6] },
             validade: { fontSize: 12, alignment: 'right' },
+            jurosComposto: { fontSize: 12, alignment: 'right' },
         }
     };
 
@@ -360,15 +391,24 @@ function gerarA3(dadosProdutoPromocao) {
         };
         let dataInicial = moment(produtoPromocao.data_inicial, 'YYYY-MM-DD').format('DD/MM/YYYY');
         let dataFinal = moment(produtoPromocao.data_final, 'YYYY-MM-DD').format('DD/MM/YYYY');
+        let valorEntrada = 0;
+
+        if(produtoPromocao.tipo_prazo_promocao == 'Sem Entrada'){
+            valorEntrada = 0;
+        }
+        if(produtoPromocao.tipo_prazo_promocao == 'Com Entrada'){
+            valorEntrada = 1;
+        }
 
         let idProduto = `${produtoPromocao.id_produto}.${produtoPromocao.id_grade_x}.${produtoPromocao.id_grade_y}`;
         let descricao = produtoPromocao.produto;
         let variacao = `${produtoPromocao.cor} - ${produtoPromocao.voltagem}`;
         let de = `De R$${produtoPromocao.de}`;
-        let prazo = `${produtoPromocao.prazo_inicial} + ${produtoPromocao.prazo_final}X`;
+        let prazo = `${valorEntrada} + ${produtoPromocao.prazo_final}X`;
         let totalAPrazo = 'Total a prazo R$';
         tipo = tipo[produtoPromocao.tipo];
         let validade = `De ${dataInicial} até ${dataFinal}`;
+        let jurosComposto = `No CDC (GazinCred) taxa de ${produtoPromocao.juro_composto}% a.m.`;
         let produtoPromocaoContentPrimeiraPagina = [
             { text: '', margin: [0, 360, 0, 0]},
             { id: `idProduto${id}`, text: idProduto, style: 'idProduto' },
@@ -404,6 +444,8 @@ function gerarA3(dadosProdutoPromocao) {
             },
             { id: `tipo${id}`, text: tipo, style: 'tipo' },
             { id: `validade${id}`, text: validade, style: 'validade' },
+            { id: `jurosComposto${id}`, text: jurosComposto, style: 'jurosComposto' },  
+
         ];
 
         if (typeof produtoPromocao.de === 'undefined' || !produtoPromocao.de) {
@@ -422,6 +464,11 @@ function gerarA3(dadosProdutoPromocao) {
             produtoPromocaoContentSegundaPagina.splice(indiceTotalAPrazo, 1);
         }
 
+        if (produtoPromocao.tipoFormato !== 'CDC') {
+            let indiceJurosComposto = produtoPromocaoContentSegundaPagina.findIndex((obj) => obj.id === `jurosComposto{id}`);    
+            produtoPromocaoContentSegundaPagina.splice(indiceJurosComposto, 1);
+        }
+
         docDefinition.content.push(produtoPromocaoContentSegundaPagina, { text: '', pageBreak: 'after' });
 
         id++;
@@ -431,7 +478,7 @@ function gerarA3(dadosProdutoPromocao) {
 
     let pdfDocGenerator = pdfMake.createPdf(docDefinition);
 
-    pdfDocGenerator.download('cartazeando.pdf');
+    pdfDocGenerator.download('cartazin.pdf');
 
     pdfMake.createPdf(docDefinition).getBase64(function (base64) {
         let pdfData = 'data:application/pdf;base64,' + base64;
@@ -582,10 +629,11 @@ function getDivImgInformacoesCheckbox() {
     return div;
 }
 
-function getDivConteudoCard() {
+function getDivConteudoCard(idElemento) {
     let div = document.createElement('div');
 
     div.setAttribute('class', 'h-100 border p-3');
+    div.setAttribute('onclick', `selecionarCheckbox('produtoPromocao${idElemento}')`);
 
     return div;
 }
@@ -593,7 +641,7 @@ function getDivConteudoCard() {
 function getDivCard(idElemento, produto) {
     let div = document.createElement('div');
 
-    div.setAttribute('class', 'col-md-3 p-3');
+    div.setAttribute('class', 'col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3');
     div.setAttribute('id', `produtoPromocao${idElemento}`);
 
     let json = JSON.stringify(produto);
