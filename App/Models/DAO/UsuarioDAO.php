@@ -105,4 +105,14 @@ class UsuarioDAO extends DAO
         FROM
             usuario";
     }
+
+    public function deletar($usuario)
+    {        
+        return $this->delete(
+            'usuario',
+            'id',
+            $usuario    
+        );
+    }
+
 }

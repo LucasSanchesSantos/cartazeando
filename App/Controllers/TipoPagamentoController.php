@@ -90,5 +90,19 @@ class TipoPagamentoController extends Controller
         ];
     }
 
+    public function deletar(): void
+    {
+        $id = $_GET['id'];
+        $tipoPagamentoDAO = new tipoPagamentoDAO();
 
+        try {
+            $tipoPagamentoDAO->deletar($id);
+
+            Sessao::gravaSucesso("Tipo pagamento removido com sucesso!");
+        } catch (\Exception $e) {
+            Sessao::gravaErro("Erro ao remover Tipo pagamento.");
+        }
+
+        $this->redirect('tipoPagamento', "index");
+    }
 }

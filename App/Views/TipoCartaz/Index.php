@@ -12,6 +12,7 @@
                 <th class="text-center align-middle">Tamanho final</th>
                 <th class="text-center align-middle">Quantidade de folhas</th>
                 <th class="text-center align-middle">Editar</th>
+                <th class="text-center align-middle">Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,13 @@
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>tipoCartaz/edicao?id=<?= $tipoCartaz['id'] ?>">
                                 <i class="bi bi-gear-fill"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-danger" href="<?= URL ?>tipoCartaz/deletar?id=<?= $tipoCartaz['id'] ?>">
+                                <i class="bi bi-trash3-fill"></i>
                             </a>
                         </div>
                     </td>

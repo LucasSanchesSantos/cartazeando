@@ -93,5 +93,19 @@ class TipoCartazController extends Controller
         ];
     }
 
+    public function deletar(): void
+    {
+        $id = $_GET['id'];
+        $tipoCartazDAO = new tipoCartazDAO();
 
+        try {
+            $tipoCartazDAO->deletar($id);
+
+            Sessao::gravaSucesso("Tipo cartaz removido com sucesso!");
+        } catch (\Exception $e) {
+            Sessao::gravaErro("Erro ao remover Tipo cartaz.");
+        }
+
+        $this->redirect('tipoCartaz', "index");
+    }
 }

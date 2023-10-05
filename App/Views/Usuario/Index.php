@@ -14,7 +14,8 @@
                 <th class="text-center align-middle">Usuario</th>
                 <th class="text-center align-middle">Formato</th>
                 <th class="text-center align-middle">Permissão</th>
-                <th class="text-center align-middle">Ação</th>
+                <th class="text-center align-middle">Editar</th>
+                <th class="text-center align-middle">Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,13 @@
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>usuario/edicao?id=<?= $usuario['id'] ?>">
                                 <i class="bi bi-gear-fill"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-danger" href="<?= URL ?>usuario/deletar?id=<?= $usuario['id'] ?>">
+                                <i class="bi bi-trash3-fill"></i>
                             </a>
                         </div>
                     </td>

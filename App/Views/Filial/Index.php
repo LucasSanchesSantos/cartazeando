@@ -12,6 +12,7 @@
                 <th class="text-center align-middle">Cidade</th>
                 <th class="text-center align-middle">UF</th>
                 <th class="text-center align-middle">Editar</th>
+                <th class="text-center align-middle">Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,13 @@
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>filial/edicao?id=<?= $filial['id'] ?>">
                                 <i class="bi bi-gear-fill"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-danger" href="<?= URL ?>filial/deletar?id=<?= $filial['id'] ?>">
+                                <i class="bi bi-trash3-fill"></i>
                             </a>
                         </div>
                     </td>

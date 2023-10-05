@@ -100,17 +100,17 @@ class UsuarioController extends Controller
     {
         $usuarioLogado = Sessao::getUsuario();
 
-        if (!empty($_POST['id']) && $usuarioLogado['id_tipo_permissao'] == TipoPermissao::ADMINISTRATIVO->value) {
+        if (!empty($_GET['id']) && $usuarioLogado['id_tipo_permissao'] == TipoPermissao::ADMINISTRATIVO->value) {
             return [
-                'id' => intval($_POST['id']),
-                'idFilial' => intval($_POST['idFilial']),
-                'numeroFilial' => intval($_POST['numeroFilial']),
-                'idEmpresa' => intval($_POST['idEmpresa']),
-                'cidade' => strval($_POST['cidade']),
-                'usuario' => strval($_POST['usuario']),
-                'senha' => $this->getSenha(intval($_POST['id'])),
-                'idTipoFormato' => intval($_POST['idTipoFormato']),
-                'idTipoPermissao' => intval($_POST['idTipoPermissao'])
+                'id' => intval($_GET['id']),
+                'idFilial' => intval($_GET['idFilial']),
+                'numeroFilial' => intval($_GET['numeroFilial']),
+                'idEmpresa' => intval($_GET['idEmpresa']),
+                'cidade' => strval($_GET['cidade']),
+                'usuario' => strval($_GET['usuario']),
+                'senha' => $this->getSenha(intval($_GET['id'])),
+                'idTipoFormato' => intval($_GET['idTipoFormato']),
+                'idTipoPermissao' => intval($_GET['idTipoPermissao'])
             ];
         }
 
@@ -135,5 +135,21 @@ class UsuarioController extends Controller
         $usuarioDAO = new UsuarioDAO();
         
         return $usuarioDAO->getDadosUsuario($idUsuario)['senha'];
+    }
+
+    public function deletar(): void
+    {
+        $id = $_GET['id'];
+        $usuarioDAO = new UsuarioDAO();
+
+        try {
+            $usuarioDAO->deletar($id);
+
+            Sessao::gravaSucesso("Usuário removido com sucesso!");
+        } catch (\Exception $e) {
+            Sessao::gravaErro("Erro ao remover usuário.");
+        }
+
+        $this->redirect('usuario', "index");
     }
 }

@@ -76,4 +76,13 @@ class TipoPagamentoDAO extends DAO
             WHERE id = :id    
             ";
     }
+
+    public function deletar($tipoPagamento)
+    {        
+        return $this->delete(
+            'tipo_pagamento',
+            'id',
+            $tipoPagamento    
+        );
+    }
 }

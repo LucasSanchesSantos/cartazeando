@@ -85,5 +85,19 @@ class EmpresaController extends Controller
         ];
     }
 
+    public function deletar(): void
+    {
+        $id = $_GET['id'];
+        $empresaDAO = new empresaDAO();
 
+        try {
+            $empresaDAO->deletar($id);
+
+            Sessao::gravaSucesso("empresa removida com sucesso!");
+        } catch (\Exception $e) {
+            Sessao::gravaErro("Erro ao remover empresa.");
+        }
+
+        $this->redirect('empresa', "index");
+    }
 }

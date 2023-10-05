@@ -12,7 +12,7 @@
     <div class="mb-3">
         <div class="mb-3">
             <label for="idEmpresa" class="form-label">Empresa</label>
-            <input type="number" class="form-control" id="idEmpresa" name="idEmpresa" required>
+            <input type="text" class="form-control" id="idEmpresa" name="idEmpresa" required>
         </div>
         <div class="mb-3">
             <label for="cidade" class="form-label">Cidade</label>

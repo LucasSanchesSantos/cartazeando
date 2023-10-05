@@ -76,4 +76,13 @@ class TipoCartazDAO extends DAO
             WHERE id = :id    
             ";
     }
+
+    public function deletar($id)
+    {        
+        return $this->delete(
+            'tipo_cartaz',
+            'id',
+            $id    
+        );
+    }
 }

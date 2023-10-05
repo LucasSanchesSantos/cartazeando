@@ -89,5 +89,19 @@ class FilialController extends Controller
         ];
     }
 
+    public function deletar(): void
+    {
+        $id = $_GET['id'];
+        $filialDAO = new filialDAO();
 
+        try {
+            $filialDAO->deletar($id);
+
+            Sessao::gravaSucesso("filial removida com sucesso!");
+        } catch (\Exception $e) {
+            Sessao::gravaErro("Erro ao remover filial.");
+        }
+
+        $this->redirect('filial', "index");
+    }
 }

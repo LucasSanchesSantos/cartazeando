@@ -11,6 +11,7 @@
                 <th class="text-center align-middle">Empresa</th>
                 <th class="text-center align-middle">CNPJ</th>
                 <th class="text-center align-middle">Editar</th>
+                <th class="text-center align-middle">Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,13 @@
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>empresa/edicao?id=<?= $empresa['id'] ?>">
                                 <i class="bi bi-gear-fill"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-danger" href="<?= URL ?>empresa/deletar?id=<?= $empresa['id'] ?>">
+                                <i class="bi bi-trash3-fill"></i>
                             </a>
                         </div>
                     </td>

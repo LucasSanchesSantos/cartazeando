@@ -76,4 +76,13 @@ class FilialDAO extends DAO
             WHERE id = :id    
             ";
     }
+
+    public function deletar($id)
+    {        
+        return $this->delete(
+            'filial',
+            'id',
+            $id    
+        );
+    }
 }
