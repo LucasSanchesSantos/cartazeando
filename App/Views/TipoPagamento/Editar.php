@@ -1,4 +1,4 @@
-<h3 class="text-center mb-4"><i class="bi bi-person-gear"></i> Usuário</h3>
+<h3 class="text-center mb-4"><i class="bi bi-person-gear"></i> Tipo pagamento</h3>
 
 <form action="<?= URL ?>tipoPagamento/editar" method="post">
     <input type="hidden" id="id" name="id" value=<?= !empty($_GET['id']) ? intval($_GET['id']) : intval($tipoPagamento['id']) ?>>
