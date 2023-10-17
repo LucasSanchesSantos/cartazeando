@@ -66,6 +66,10 @@
                             <li class="nav-item">
                                 <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Voltagem/index"><i class="text-dark-blue bi bi-lightning"></i> Voltagem</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>ProdutoCadastro/index"><i class="text-dark-blue bi bi-lightning"></i> Produto</a>
+                            </li>
                         <?php
                             }
                         ?>
