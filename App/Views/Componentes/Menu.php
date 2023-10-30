@@ -49,26 +49,29 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus"></i> Tipo de cartaz</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus me-2"></i>Tipo de cartaz</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>filial/index"><i class="text-dark-blue bi bi-shop"></i> Filiais</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>filial/index"><i class="text-dark-blue bi bi-shop me-2"></i>Filiais</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Empresa/index"><i class="text-dark-blue bi bi-building"></i> Empresa</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Empresa/index"><i class="text-dark-blue bi bi-building me-2"></i>Empresa</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Cor/index"><i class="text-dark-blue bi bi-palette"></i> Cor</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Voltagem/index"><i class="text-dark-blue bi bi-lightning"></i> Voltagem</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Cor/index"><i class="text-dark-blue bi bi-palette me-2"></i>Cor</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>ProdutoCadastro/index"><i class="text-dark-blue bi bi-lightning"></i> Produto</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Voltagem/index"><i class="text-dark-blue bi bi-lightning me-2"></i>Voltagem</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>ProdutoCadastro/index"><i class="text-dark-blue bi bi-tv me-2"></i>Produto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Promocao/index"><i class="text-dark-blue bi bi-tags-fill me-2"></i>Promoções</a>
                             </li>
                         <?php
                             }
