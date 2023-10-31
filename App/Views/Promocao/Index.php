@@ -29,17 +29,17 @@
                 <tr>
                     <td class="text-center align-middle"><?= $promocao['id'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['descricao'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['id_produto'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['id_cor'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['id_voltagem'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['id_filial'] ?></td>
+                    <td class="text-center align-middle"><?= $promocao['produto'] ?></td>
+                    <td class="text-center align-middle"><?= $promocao['cor'] ?></td>
+                    <td class="text-center align-middle"><?= $promocao['voltagem'] ?></td>
+                    <td class="text-center align-middle"><?= $promocao['filial'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['valor_promocao'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['data_inicio'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['data_fim'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['id_tipo_promocao'] ?></td>
+                    <td class="text-center align-middle"><?= $promocao['tipo_pagamento'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['parcela_inicio'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['parcela_fim'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['id_situacao'] ?></td>
+                    <td class="text-center align-middle"><?= $promocao['situacao'] ?></td>
                     <td class="text-center align-middle">
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>promocao/edicao?id=<?= $promocao['id'] ?>">

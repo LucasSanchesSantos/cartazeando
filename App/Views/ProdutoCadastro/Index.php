@@ -20,8 +20,8 @@
             <?php foreach ($this->getViewVar()['produtoCadastro'] as $produtoCadastro) { ?>
                 <tr>
                     <td class="text-center align-middle"><?= $produtoCadastro['id_produto'] ?></td>
-                    <td class="text-center align-middle"><?= $produtoCadastro['id_cor'] ?></td>
-                    <td class="text-center align-middle"><?= $produtoCadastro['id_voltagem'] ?></td>
+                    <td class="text-center align-middle"><?= $produtoCadastro['cor'] ?></td>
+                    <td class="text-center align-middle"><?= $produtoCadastro['voltagem'] ?></td>
                     <td class="text-center align-middle"><?= $produtoCadastro['produto'] ?></td>
                     <td class="text-center align-middle"><?= $produtoCadastro['preco_venda'] ?></td>
                     <td class="text-center align-middle">

@@ -5,15 +5,35 @@
     
         <div class="mb-3">
             <label class="form-label">Código do produto</label>
-            <input type="text" class="form-control" id="id_produto" disable name="id_produto" value="<?= $this->viewVar['produtoCadastro']['id_produto'] ?>" required>
+            <input type="text" class="form-control" id="id_produto" name="id_produto" value="<?= $this->viewVar['produtoCadastro']['id_produto'] ?>" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Cor</label>
-            <input type="text" class="form-control" id="id_cor" name="id_cor" value="<?= $this->viewVar['produtoCadastro']['id_cor'] ?>" required>
+            <select class="form-select" id="id_cor" name="id_cor" required>
+            <?php
+                    foreach ($this->viewVar['cor'] as $cor) {
+                ?>
+                    <option value=<?= $cor['id'] ?> <?= $this->viewVar['produtoCadastro']['id_cor'] == $cor['id'] ? 'selected' : '' ?>>
+                        <?= $cor['descricao'] ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Voltagem</label>
-            <input type="text" class="form-control" id="id_voltagem" name="id_voltagem" value="<?= $this->viewVar['produtoCadastro']['id_voltagem'] ?>" required>
+            <select class="form-select" id="id_voltagem" name="id_voltagem" required>
+            <?php
+                foreach ($this->viewVar['voltagem'] as $voltagem) {
+            ?>
+                <option value=<?= $voltagem['id'] ?> <?= $this->viewVar['produtoCadastro']['id_voltagem'] == $voltagem['id'] ? 'selected' : '' ?>>
+                    <?= $voltagem['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Produto</label>

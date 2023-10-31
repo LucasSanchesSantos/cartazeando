@@ -16,7 +16,7 @@ class Promocao extends Entity
     protected float $valorPromocao;
     protected string $dataInicio;
     protected string $dataFim;
-    protected int $idTipoPromocao;
+    protected int $idTipoPagamento;
     protected int $parcelaInicio;
     protected int $parcelaFim;
     protected int $idSituacao;
@@ -32,7 +32,7 @@ class Promocao extends Entity
         $this->setValorPromocao(round(floatval($promocao['valor_promocao']), 2));
         $this->setDataInicio($promocao['data_inicio']);
 		$this->setDataFim($promocao['data_fim']);
-        $this->setIdTipoPromocao($promocao['id_tipo_promocao']);
+        $this->setIdTipoPagamento($promocao['id_tipo_pagamento']);
         $this->setParcelaInicio($promocao['parcela_inicio']);
         $this->setParcelaFim($promocao['parcela_fim']);
         $this->setIdSituacao($promocao['id_situacao']);
@@ -158,14 +158,14 @@ class Promocao extends Entity
         return $this;
     }
 
-    public function getIdTipoPromocao(): int
+    public function getIdTipoPagamento(): int
     {
-        return $this->idTipoPromocao;
+        return $this->idTipoPagamento;
     }
 
-    private function setIdTipoPromocao(int $idTipoPromocao): self
+    private function setIdTipoPagamento(int $idTipoPagamento): self
     {
-        $this->idTipoPromocao = $idTipoPromocao;
+        $this->idTipoPagamento = $idTipoPagamento;
 
         return $this;
     }

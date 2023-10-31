@@ -24,6 +24,7 @@ class FilialDAO extends DAO
     {
         return "SELECT
                 *
+                ,CONCAT(numero,' - ',cidade) as filial
             FROM
                 filial";
     }

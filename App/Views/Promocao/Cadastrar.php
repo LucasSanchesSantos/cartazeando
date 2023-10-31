@@ -7,19 +7,62 @@
     </div>
     <div class="mb-3">
         <label for="id_produto" class="form-label">Código do produto</label>
-        <input type="text" class="form-control" id="id_produto" name="id_produto" placeholder="" required>
-    </div>
+        <select class="form-select" id="id_produto" name="id_produto" required>
+            <?php
+                    foreach ($this->viewVar['produtoCadastro'] as $produto) {
+                ?>
+                    <option value=<?= $produto['id_produto']?>>
+                        <?= $produto['produto'] ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>
+        </div>
     <div class="mb-3">
         <label for="id_cor" class="form-label">Cor</label>
-        <input type="text" class="form-control" id="id_cor" name="id_cor" placeholder="" required>
+        <select class="form-select" id="id_cor" name="id_cor" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['cor'] as $cor) {
+            ?>
+                <option value=<?= $cor['id'] ?>>
+                    <?= $cor['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="mb-3">
         <label for="id_voltagem" class="form-label">Voltagem</label>
-        <input type="text" class="form-control" id="id_voltagem" name="id_voltagem" required>
+        <select class="form-select" id="id_voltagem" name="id_voltagem" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['voltagem'] as $idVoltagem) {
+            ?>
+                <option value=<?= $idVoltagem['id'] ?>>
+                    <?= $idVoltagem['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="mb-3">
         <label for="id_filial" class="form-label">Filial</label>
-        <input type="text" class="form-control" id="id_filial" name="id_filial" required>
+        <select class="form-select" id="id_filial" name="id_filial" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['filial'] as $filial) {
+            ?>
+                <option value=<?= $filial['id'] ?>>
+                    <?= $filial['filial'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
 
     <div class="mb-3">
@@ -35,8 +78,19 @@
         <input type="date" class="form-control" id="data_fim" name="data_fim" required>
     </div>
     <div class="mb-3">
-        <label for="id_tipo_promocao" class="form-label">Tipo Promoção</label>
-        <input type="text" class="form-control" id="id_tipo_promocao" name="id_tipo_promocao" required>
+        <label for="id_tipo_pagamento" class="form-label">Tipo Promoção</label>
+        <select class="form-select" id="id_tipo_pagamento" name="id_tipo_pagamento" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['tipoPagamento'] as $tipoPagamento) {
+            ?>
+                <option value=<?= $tipoPagamento['id'] ?>>
+                    <?= $tipoPagamento['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="mb-3">
         <label for="parcela_inicio" class="form-label">Parcela início</label>

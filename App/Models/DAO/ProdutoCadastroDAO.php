@@ -22,10 +22,14 @@ class ProdutoCadastroDAO extends DAO
 
     private function getSqlListarProdutosCadastro(): string
     {
-        return "SELECT
-                *
-            FROM
-                produtonew";
+        return 
+            "SELECT
+                p.*
+                ,c.descricao as cor
+                ,v.descricao as voltagem
+            FROM produtonew p
+            left join cor c on c.id = p.id_cor
+            left join voltagem v on v.id = p.id_voltagem";
     }
 
     public function cadastrar(ProdutoCadastro $produtoCadastro): bool
@@ -84,5 +88,28 @@ class ProdutoCadastroDAO extends DAO
             'id',
             $produtoCadastro    
         );
+    }
+
+
+    public function listarCadastroPromocao(): ?array
+    {
+        $sql = $this->getSqlListarProdutosCadastroPromocao();
+
+        $resultado = $this->selectWithBindValue($sql);
+
+        if (!$resultado) {
+            return null;
+        }
+
+        return $resultado;
+    }
+
+    private function getSqlListarProdutosCadastroPromocao(): string
+    {
+        return "SELECT DISTINCT
+                id_produto
+                ,CONCAT(id_produto, ' - ',produto) as produto
+            FROM
+                produtonew";
     }
 }

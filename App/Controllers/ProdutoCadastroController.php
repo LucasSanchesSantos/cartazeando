@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Abstractions\Controller;
 use App\Lib\Sessao;
+use App\Models\DAO\CorDAO;
 use App\Models\DAO\ProdutoCadastroDAO;
+use App\Models\DAO\VoltagemDAO;
 use App\Models\Entidades\ProdutoCadastro;
 
 class ProdutoCadastroController extends Controller
@@ -12,23 +14,37 @@ class ProdutoCadastroController extends Controller
     public function index(): void
     {
         $produtoCadastroDAO = new ProdutoCadastroDAO();
-
+        $corDAO = new CorDAO();
+        $voltagemDAO = new VoltagemDAO();
+        
         self::setViewParam('produtoCadastro', $produtoCadastroDAO->listar());
-
+        self::setViewParam('cor', $corDAO->listar());
+        self::setViewParam('voltagem', $voltagemDAO->listar());
+        
         $this->render('produtoCadastro/index');
     }
 
     public function edicao(): void
     {
         $produtoCadastroDAO = new ProdutoCadastroDAO();
+        $corDAO = new CorDAO();
+        $voltagemDAO = new VoltagemDAO();
 
         self::setViewParam('produtoCadastro', $produtoCadastroDAO->getDadosProdutoCadastro($_GET['id']));
+        self::setViewParam('cor', $corDAO->listar());
+        self::setViewParam('voltagem', $voltagemDAO->listar());
 
         $this->render('produtoCadastro/editar');
     }
 
     public function cadastro(): void
     {
+        $corDAO = new CorDAO();
+        $voltagemDAO = new VoltagemDAO();
+
+        self::setViewParam('cor', $corDAO->listar());
+        self::setViewParam('voltagem', $voltagemDAO->listar());
+
         $this->render('produtoCadastro/cadastrar');
     }
 

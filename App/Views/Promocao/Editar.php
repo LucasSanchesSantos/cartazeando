@@ -11,25 +11,61 @@
             <label class="form-label">Descricao</label>
             <input type="text" class="form-control" id="descricao" name="descricao" value="<?= $this->viewVar['promocao']['descricao'] ?>" required>
         </div>
-        <!-- <div class="mb-3">
-            <label class="form-label">data_cadastro</label>
-            <input type="text" class="form-control" id="data_cadastro" disabled="" name="data_cadastro" value="<?= $this->viewVar['promocao']['data_cadastro'] ?>" required>
-        </div> -->
         <div class="mb-3">
             <label class="form-label">Código do produto</label>
-            <input type="text" class="form-control" id="id_produto" name="id_produto" value="<?= $this->viewVar['promocao']['id_produto'] ?>" required>
+            <select class="form-select" id="id_produto" name="id_produto" required>
+            <?php
+                    foreach ($this->viewVar['produtoCadastro'] as $produto) {
+                ?>
+                    <option value=<?= $produto['id_produto'] ?> <?= $this->viewVar['promocao']['id_produto'] == $produto['id_produto'] ? 'selected' : '' ?>>
+                        <?= $produto['produto'] ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Cor</label>
-            <input type="text" class="form-control" id="id_cor" name="id_cor" value="<?= $this->viewVar['promocao']['id_cor'] ?>" required>
+            <label for="id_cor" class="form-label">Cor</label>
+            <select class="form-select" id="id_cor" name="id_cor" required>
+            <?php
+                    foreach ($this->viewVar['cor'] as $cor) {
+                ?>
+                    <option value=<?= $cor['id'] ?> <?= $this->viewVar['promocao']['id_cor'] == $cor['id'] ? 'selected' : '' ?>>
+                        <?= $cor['descricao'] ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Voltagem</label>
-            <input type="text" class="form-control" id="id_voltagem" name="id_voltagem" value="<?= $this->viewVar['promocao']['id_voltagem'] ?>" required>
+            <select class="form-select" id="id_voltagem" name="id_voltagem" required>
+            <?php
+                foreach ($this->viewVar['voltagem'] as $voltagem) {
+            ?>
+                <option value=<?= $voltagem['id'] ?> <?= $this->viewVar['promocao']['id_voltagem'] == $voltagem['id'] ? 'selected' : '' ?>>
+                    <?= $voltagem['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Id filial</label>
-            <input type="text" class="form-control" id="id_filial" name="id_filial" value="<?= $this->viewVar['promocao']['id_filial'] ?>" required>
+            <select class="form-select" id="id_filial" name="id_filial" required>
+            <?php
+                foreach ($this->viewVar['filial'] as $filial) {
+            ?>
+                <option value=<?= $filial['id'] ?> <?= $this->viewVar['promocao']['id_filial'] == $filial['id'] ? 'selected' : '' ?>>
+                    <?= $filial['filial'] ?>
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Preço promoção</label>
@@ -44,8 +80,18 @@
             <input type="date" class="form-control" id="data_fim" name="data_fim" value="<?= $this->viewVar['promocao']['data_fim'] ?>" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Tipo promoção</label>
-            <input type="text" class="form-control" id="id_tipo_promocao" name="id_tipo_promocao" value="<?= $this->viewVar['promocao']['id_tipo_promocao'] ?>" required>
+            <label class="form-label">Tipo pagamento</label>
+            <select class="form-select" id="id_tipo_pagamento" name="id_tipo_pagamento" required>
+            <?php
+                foreach ($this->viewVar['tipoPagamento'] as $tipoPagamento) {
+            ?>
+                <option value=<?= $tipoPagamento['id'] ?> <?= $this->viewVar['promocao']['id_tipo_pagamento'] == $tipoPagamento['id'] ? 'selected' : '' ?>>
+                    <?= $tipoPagamento['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Parcela início</label>
@@ -57,7 +103,17 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Situação</label>
-            <input type="text" class="form-control" id="id_situacao" name="id_situacao" value="<?= $this->viewVar['promocao']['id_situacao'] ?>" required>
+            <select class="form-select" id="id_situacao" name="id_situacao" required>
+            <?php
+                foreach ($this->viewVar['situacao'] as $situacao) {
+            ?>
+                <option value=<?= $situacao['id'] ?> <?= $this->viewVar['promocao']['id_situacao'] == $situacao['id'] ? 'selected' : '' ?>>
+                    <?= $situacao['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
     
         <div class="text-end">

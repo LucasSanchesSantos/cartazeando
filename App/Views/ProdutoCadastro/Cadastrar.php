@@ -7,11 +7,33 @@
     </div>
     <div class="mb-3">
         <label for="numeroFilial" class="form-label">Cor</label>
-        <input type="text" class="form-control" id="id_cor" name="id_cor" placeholder="" required>
+        <select class="form-select" id="id_cor" name="id_cor" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['cor'] as $cor) {
+            ?>
+                <option value=<?= $cor['id'] ?>>
+                    <?= $cor['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="mb-3">
         <label for="numeroFilial" class="form-label">Voltagem</label>
-        <input type="text" class="form-control" id="id_voltagem" name="id_voltagem" placeholder="" required>
+        <select class="form-select" id="id_voltagem" name="id_voltagem" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['voltagem'] as $idVoltagem) {
+            ?>
+                <option value=<?= $idVoltagem['id'] ?>>
+                    <?= $idVoltagem['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="mb-3">
         <label for="numeroFilial" class="form-label">Produto</label>

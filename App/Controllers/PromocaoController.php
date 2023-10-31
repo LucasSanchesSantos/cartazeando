@@ -4,7 +4,13 @@ namespace App\Controllers;
 
 use App\Abstractions\Controller;
 use App\Lib\Sessao;
+use App\Models\DAO\CorDAO;
+use App\Models\DAO\FilialDAO;
+use App\Models\DAO\ProdutoCadastroDAO;
 use App\Models\DAO\PromocaoDAO;
+use App\Models\DAO\SituacaoDAO;
+use App\Models\DAO\TipoPagamentoDAO;
+use App\Models\DAO\VoltagemDAO;
 use App\Models\Entidades\Promocao;
 
 class PromocaoController extends Controller
@@ -12,8 +18,18 @@ class PromocaoController extends Controller
     public function index(): void
     {
         $promocaoDAO = new PromocaoDAO();
+        $tipoPagamentoDAO = new TipoPagamentoDAO();
+        $corDAO = new CorDAO();
+        $voltagemDAO = new VoltagemDAO();
+        $filialDAO = new FilialDAO();
+        $produtoCadastroDAO = new ProdutoCadastroDAO();
 
         self::setViewParam('promocao', $promocaoDAO->listar());
+        self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
+        self::setViewParam('cor', $corDAO->listar());
+        self::setViewParam('voltagem', $voltagemDAO->listar());
+        self::setViewParam('filial', $filialDAO->listar());
+        self::setViewParam('produtoCadastro', $produtoCadastroDAO->listarCadastroPromocao());
 
         $this->render('promocao/index');
     }
@@ -21,15 +37,40 @@ class PromocaoController extends Controller
     public function edicao(): void
     {
         $promocaoDAO = new PromocaoDAO();
+        $tipoPagamentoDAO = new TipoPagamentoDAO();
+        $corDAO = new CorDAO();
+        $voltagemDAO = new VoltagemDAO();
+        $filialDAO = new FilialDAO();
+        $situacaoDAO = new SituacaoDAO();
+        $produtoCadastroDAO = new ProdutoCadastroDAO();
 
         self::setViewParam('promocao', $promocaoDAO->getDadosPromocao($_GET['id']));
+        self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
+        self::setViewParam('cor', $corDAO->listar());
+        self::setViewParam('voltagem', $voltagemDAO->listar());
+        self::setViewParam('filial', $filialDAO->listar());
+        self::setViewParam('situacao', $situacaoDAO->listar());
+        self::setViewParam('produtoCadastro', $produtoCadastroDAO->listarCadastroPromocao());
 
         $this->render('promocao/editar');
     }
 
     public function cadastro(): void
     {
+        $tipoPagamentoDAO = new TipoPagamentoDAO();
+        $corDAO = new CorDAO();
+        $voltagemDAO = new VoltagemDAO();
+        $filialDAO = new FilialDAO();
+        $produtoCadastroDAO = new ProdutoCadastroDAO();
+
+        self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
+        self::setViewParam('cor', $corDAO->listar());
+        self::setViewParam('voltagem', $voltagemDAO->listar());
+        self::setViewParam('filial', $filialDAO->listar());
+        self::setViewParam('produtoCadastro', $produtoCadastroDAO->listarCadastroPromocao());
+
         $this->render('promocao/cadastrar');
+
     }
 
     public function cadastrar(): void
@@ -45,7 +86,7 @@ class PromocaoController extends Controller
             'valor_promocao' => floatval($_POST['valor_promocao']),
             'data_inicio' => strval($_POST['data_inicio']),
             'data_fim' => strval($_POST['data_fim']),
-            'id_tipo_promocao' => intval($_POST['id_tipo_promocao']),
+            'id_tipo_pagamento' => intval($_POST['id_tipo_pagamento']),
             'parcela_inicio' => intval($_POST['parcela_inicio']),
             'parcela_fim' => intval($_POST['parcela_fim']),
             'id_situacao' => 1,
@@ -96,7 +137,7 @@ class PromocaoController extends Controller
             'valor_promocao' => floatval($_POST['valor_promocao']),
             'data_inicio' => strval($_POST['data_inicio']),
             'data_fim' => strval($_POST['data_fim']),
-            'id_tipo_promocao' => intval($_POST['id_tipo_promocao']),
+            'id_tipo_pagamento' => intval($_POST['id_tipo_pagamento']),
             'parcela_inicio' => intval($_POST['parcela_inicio']),
             'parcela_fim' => intval($_POST['parcela_fim']),
             'id_situacao' => intval($_POST['id_situacao']),
