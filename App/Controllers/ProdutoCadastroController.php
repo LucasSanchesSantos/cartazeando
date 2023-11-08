@@ -48,15 +48,42 @@ class ProdutoCadastroController extends Controller
         $this->render('produtoCadastro/cadastrar');
     }
 
+        // if($extensao != 'png'  or  $extensao != 'jpg'){
+        //     die(Sessao::gravaErro("Formato de imagem inválido! Insira um formato png, ou jpg."));
+        // }
+
     public function cadastrar(): void
     {
+        $arquivo = $_FILES['imagem'];
+
+        if($arquivo['error']){
+            die("Falha ao enviar arquivo.");
+        }
+        
+        $nomeDoArquivo = $arquivo['name'];
+        $novoNomeDoArquivo = uniqid();
+        $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
+
+        // if($extensao != 'png'  or  $extensao != 'jpg'){
+        //     die(Sessao::gravaErro("Formato de imagem inválido! Insira um formato png, ou jpg."));
+        // }
+
+        $path = 'App/Views/ImagensProdutos/';
+        $caminhoImagem = 'App/Views/ImagensProduto/' . $novoNomeDoArquivo . "." . $extensao;
+
+        //move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
+
+        move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
+
         $produtoCadastro = new ProdutoCadastro([
             'id' => 0,
             'id_produto' => intval($_POST['id_produto']),
             'id_cor' => intval($_POST['id_cor']),
             'id_voltagem' => intval($_POST['id_voltagem']),
             'produto' => strval($_POST['produto']),
-            'preco_venda' => floatval($_POST['preco_venda'])
+            'preco_venda' => floatval($_POST['preco_venda']),
+            'imagem' => strval($novoNomeDoArquivo),
+            'caminho_imagem' => strval($caminhoImagem),
         ]);
 
         $produtoCadastroDAO = new ProdutoCadastroDAO();
