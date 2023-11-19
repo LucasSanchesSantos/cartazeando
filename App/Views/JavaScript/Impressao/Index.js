@@ -37,9 +37,9 @@ function atualizarCards(idFilialSessao) {
 
     let idFilial = elementoIdFilial ? elementoIdFilial.value : idFilialSessao;
 
-    let filtroPromocao = document.getElementById('filtroPromocao').value;
-    let filtroCategoria = document.getElementById('filtroCategoria').value;
-    let filtroSubcategoria = document.getElementById('filtroSubcategoria').value;
+    let filtroPromocao = document.getElementById('filtroIdPromocao').value;
+    // let filtroCategoria = document.getElementById('filtroCategoria').value;
+    // let filtroSubcategoria = document.getElementById('filtroSubcategoria').value;
     let filtroIdProduto = document.getElementById('filtroIdProduto').value;
 
     $('#modalFiltro').modal('hide');
@@ -47,8 +47,8 @@ function atualizarCards(idFilialSessao) {
     let parametros = {
         "idFilial": idFilial,
         "promocao": filtroPromocao,
-        "idDepartamento": filtroCategoria,
-        "idSubdepartamento": filtroSubcategoria,
+        // "idDepartamento": filtroCategoria,
+        // "idSubdepartamento": filtroSubcategoria,
         "idProduto": filtroIdProduto
     };
 
@@ -186,31 +186,45 @@ function selecionarCheckbox(idCheckbox) {
     checkbox.checked = true;
 }
 
+function enviarDadosParaRota(dados) {
+    
+    $.ajax({
+        type: 'POST',
+        url: `${URL}impressoes/inserirRegistrosImpressoes`,
+        contentType: 'application/json', // Define o tipo de conteúdo para JSON
+        data: JSON.stringify({ dados }), // Envia os dados como JSON
+        success: function(response) {
+            console.log('Dados enviados com sucesso:', dados);
+
+            // Aqui você pode realizar ações adicionais, se necessário
+        },
+        error: function(error) {
+            console.error('Erro ao enviar dados:', dados);
+        }
+    });
+}
+
 function impressao(tipoCartaz) {
     let checkboxesMarcados = document.querySelectorAll('input[type="checkbox"]:checked');
-
     let dados = [];
 
     for (let i = 0; i < checkboxesMarcados.length; i++) {
-      let checkbox = checkboxesMarcados[i];
-
-      divProdutoPromocao = document.getElementById(checkbox.value);
-
-      dadosProdutoPromocao = JSON.parse(divProdutoPromocao.getAttribute('dados'));
-
-      dados.push(dadosProdutoPromocao);
+        let checkbox = checkboxesMarcados[i];
+        divProdutoPromocao = document.getElementById(checkbox.value);
+        dadosProdutoPromocao = JSON.parse(divProdutoPromocao.getAttribute('dados'));
+        dados.push(dadosProdutoPromocao);
     }
 
-    if (tipoCartaz == 'A4') {
-        gerarA4(dados);
+    if (dados.length > 0) {
+        enviarDadosParaRota(dados);
 
-        return;
-    }
-
-    if (tipoCartaz == 'A3') {
-        gerarA3(dados);
-
-        return;
+        if (tipoCartaz == 'A4') {
+            gerarA4(dados);
+        } else if (tipoCartaz == 'A3') {
+            gerarA3(dados);
+        }
+    } else {
+        console.log('Nenhum dado para enviar');
     }
 }
 
@@ -232,7 +246,6 @@ function gerarA4(dadosProdutoPromocao) {
             tipo: { fontSize: 16, alignment: 'right', margin: [0, 15, 0, 6] },
             validade: { fontSize: 9, alignment: 'right' },
             jurosComposto: { fontSize: 9, alignment: 'right' },
-
         }
     };
 
@@ -568,7 +581,7 @@ function getDivInformacoes(produto, valor, idElemento) {
 
     let textoDescricao = document.createTextNode(produto['produto']);
     let textoCodigoSaldo = document.createTextNode(
-        `${produto['id_produto']}.${produto['id_grade_x']}.${produto['id_grade_y']} | Saldo: ${produto['estoque']}`
+        `${produto['id_produto']}.${produto['id_grade_x']}.${produto['id_grade_y']}`
     );
 
     let textoTipoValor = `${produto['tipo']}: <small>R$</small>${valor}`;

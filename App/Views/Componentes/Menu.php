@@ -48,17 +48,16 @@
                                 <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoPagamento/index"><i class="text-dark-blue bi bi-gear-fill me-2"></i>Tipos de pagamentos</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus me-2"></i>Tipo de cartaz</a>
-                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus me-2"></i>Tipo de cartaz</a>
+                            </li> -->
 
                             <li class="nav-item">
                                 <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>filial/index"><i class="text-dark-blue bi bi-shop me-2"></i>Filiais</a>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Empresa/index"><i class="text-dark-blue bi bi-building me-2"></i>Empresa</a>
-                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="Empresa/index"><i class="text-dark-blue bi bi-building me-2"></i>Empresa</a>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Cor/index"><i class="text-dark-blue bi bi-palette me-2"></i>Cor</a>
                             </li>

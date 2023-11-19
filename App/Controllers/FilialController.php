@@ -40,8 +40,8 @@ class FilialController extends Controller
     {
         $filial = new Filial([
             'id' => intval($_POST['id']),
-            'numero' => intval($_POST['numero']),
-            'empresa' => intval($_POST['empresa']),
+            'numero' => intval(substr($_POST['idFilial'], -3)),
+            'empresa' => 1,
             'cidade' => strval($_POST['cidade']),
             'uf' => strval($_POST['uf']),        
         ]);
@@ -82,8 +82,8 @@ class FilialController extends Controller
     {
         return [
             'id' => intval($_POST['id']),
-            'numero' => intval($_POST['numero']),
-            'empresa' => intval($_POST['empresa']),
+            'numero' => intval(substr($_POST['idFilial'], -3)),
+            'empresa' => 1,
             'cidade' => strval($_POST['cidade']),
             'uf' => strval($_POST['uf']), 
         ];

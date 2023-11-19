@@ -1,9 +1,4 @@
 <div>
-    <div class="d-flex justify-content-end mb-2">
-        <button class="btn btn-dark-blue" type="button" onclick="atualizarPromocoes(<?= $usuario['id_filial']?>)">
-            <i class="bi bi-arrow-clockwise"></i>
-        </button>
-    </div>
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid d-flex justify-content-between">
         <div class="d-flex">
@@ -42,7 +37,8 @@
         </div>
     </div>
 
-    <div class="mt-4 row" id="divCards">
+     <div class="mt-4 row" id="divCards"> <!--Cartaz gera aqui dentro dessa div -->
+     
     </div>
 </div>
 
@@ -60,38 +56,21 @@
       <div class="modal-body">
             <form action="">
                 <div class="mb-4">
-                    <label class="form-label" for="filtroPromocao">Promoção</label>
-                    <select class="form-control selectpicker" id="filtroPromocao" title="Selecione" name="filtroPromocao" data-live-search="true">
+                    <label class="form-label" for="filtroIdPromocao">Promoção</label>
+                    <select class="form-control selectpicker" id="filtroIdPromocao" title="Selecione" name="filtroIdPromocao" data-live-search="true">
                         <option value="">Selecione</option>
                         <?php foreach ($this->viewVar['promocoes'] as $promocao) { ?>
-                            <option value="<?= "{$promocao['promocao']}|{$promocao['tipo']}" ?>"><?= strtoupper("{$promocao['promocao']} ({$promocao['tipo']})") ?></option>
+                            <option value="<?= "{$promocao['id_promocao']}" ?>"><?= "{$promocao['descricao']} ({$promocao['tipo']})" ?></option>
                         <?php } ?>
                     </select>
                 </div>
-                <div class="mb-4">
-                    <label class="form-label" for="filtroCategoria">Categoria</label>
-                    <select class="form-control selectpicker" id="filtroCategoria" title="Selecione" name="filtroCategoria" data-live-search="true">
-                        <option value="">Selecione</option>
-                        <?php foreach ($this->viewVar['categorias'] as $categoria) { ?>
-                            <option value="<?= $categoria['id_departamento'] ?>"><?= strtoupper($categoria['departamento']) ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="form-label" for="filtroSubcategoria">Subcategoria</label>
-                    <select class="form-control selectpicker" id="filtroSubcategoria" title="Selecione" name="filtroSubcategoria" data-live-search="true">
-                        <option value="">Selecione</option>
-                        <?php foreach ($this->viewVar['subcategorias'] as $subcategoria) { ?>
-                            <option value="<?= $subcategoria['id_sub_departamento'] ?>"><?= strtoupper($subcategoria['sub_departamento']) ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
+                   
                 <div class="mb-4">
                     <label class="form-label" for="filtroIdProduto">Código produto</label>
                     <select class="form-control selectpicker" id="filtroIdProduto" title="Selecione" name="filtroIdProduto" data-live-search="true">
                         <option value="">Selecione</option>
                         <?php foreach ($this->viewVar['idProdutos'] as $idProduto) { ?>
-                            <option value="<?= $idProduto['idProduto'] ?>"><?= strtoupper($idProduto['idProduto']) ?></option>
+                            <option value="<?= $idProduto['id_produto'] ?>"><?= $idProduto['id_produto'].' - '.$idProduto['produto']?></option>
                         <?php } ?>
                     </select>
                 </div>

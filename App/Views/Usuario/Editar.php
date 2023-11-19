@@ -8,21 +8,19 @@
     ?>
         <div class="mb-3">
             <label for="idFilial" class="form-label">ID Filial</label>
-            <input type="number" class="form-control" id="idFilial" name="idFilial" value="<?= $this->viewVar['usuario']['id_filial'] ?>" required>
+            <select class="form-select" id="idFilial" name="idFilial" required>
+                <option value="<?= $this->viewVar['usuario']['id_filial'] ?>"><?= $this->viewVar['usuario']['filial'] ?></option>
+                <?php
+                    foreach ($this->viewVar['filiais'] as $filial) {
+                ?>
+                    <option value=<?= $filial['id_filial'] ?>>
+                        <?= $filial['filial'] ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>        
         </div>
-        <div class="mb-3">
-            <label for="numeroFilial" class="form-label">Número da Filial</label>
-            <input type="number" class="form-control" id="numeroFilial" name="numeroFilial" value="<?= $this->viewVar['usuario']['numero_filial'] ?>" required>
-        </div>
-        <div class="mb-3">
-            <label for="idEmpresa" class="form-label">Empresa</label>
-            <input type="number" class="form-control" id="idEmpresa" name="idEmpresa" value="<?= $this->viewVar['usuario']['id_empresa'] ?>" required>
-        </div>
-        <div class="mb-3">
-            <label for="cidade" class="form-label">Cidade</label>
-            <input type="text" class="form-control" id="cidade" name="cidade" value="<?= $this->viewVar['usuario']['cidade'] ?>" required>
-        </div>
-    
     <?php
         }
     ?>
@@ -39,21 +37,6 @@
     <?php
         if ($isAdministrativo) {
     ?>
-
-        <div class="mb-3">
-            <label for="idTipoFormato" class="form-label">Formato</label>
-            <select class="form-select" id="idTipoFormato" name="idTipoFormato" required>
-                <?php
-                    foreach ($this->viewVar['tiposFormato'] as $tipoFormato) {
-                ?>
-                    <option value=<?= $tipoFormato['id'] ?> <?= $this->viewVar['usuario']['id_tipo_formato'] == $tipoFormato['id'] ? 'selected' : '' ?>>
-                        <?= $tipoFormato['descricao'] ?>
-                    </option>
-                <?php
-                    }
-                ?>
-            </select>
-        </div>
         <div class="mb-3">
             <label for="idTipoPermissao" class="form-label">Permissão</label>
             <select class="form-select" id="idTipoPermissao" name="idTipoPermissao" required>

@@ -48,10 +48,6 @@ class ProdutoCadastroController extends Controller
         $this->render('produtoCadastro/cadastrar');
     }
 
-        // if($extensao != 'png'  or  $extensao != 'jpg'){
-        //     die(Sessao::gravaErro("Formato de imagem inválido! Insira um formato png, ou jpg."));
-        // }
-
     public function cadastrar(): void
     {
         $arquivo = $_FILES['imagem'];
@@ -64,14 +60,8 @@ class ProdutoCadastroController extends Controller
         $novoNomeDoArquivo = uniqid();
         $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
 
-        // if($extensao != 'png'  or  $extensao != 'jpg'){
-        //     die(Sessao::gravaErro("Formato de imagem inválido! Insira um formato png, ou jpg."));
-        // }
-
         $path = 'App/Views/ImagensProdutos/';
-        $caminhoImagem = 'App/Views/ImagensProduto/' . $novoNomeDoArquivo . "." . $extensao;
-
-        //move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
+        $caminhoImagem = 'App/Views/ImagensProdutos/' . $novoNomeDoArquivo . "." . $extensao;
 
         move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
 

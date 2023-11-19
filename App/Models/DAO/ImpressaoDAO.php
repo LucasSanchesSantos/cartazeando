@@ -95,15 +95,15 @@ class ImpressaoDAO extends DAO
     private function getSqlPromocoes(): string
     {
         return "SELECT
-                promocao,
-                tipo
-            FROM
-                produto
+                p.id as id_promocao
+                ,p.descricao
+                ,t.descricao as tipo
+            FROM promocao p
+            left join tipo_pagamento t on p.id_tipo_pagamento = t.id
             WHERE
                 id_filial = :idFilial
             GROUP BY
-                promocao,
-                tipo";
+            descricao";
     }
 
     private function getSqlCategorias(): string
@@ -133,9 +133,9 @@ class ImpressaoDAO extends DAO
     private function getSqlIdProdutos(): string
     {
         return "SELECT
-                    id_produto as idProduto
-                FROM
-                    produto
+                    id_produto
+                    ,produto
+                FROM produtonew
                 GROUP BY
                     id_produto";
     }

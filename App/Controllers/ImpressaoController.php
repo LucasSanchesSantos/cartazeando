@@ -49,6 +49,7 @@ class ImpressaoController extends Controller
         try {
             $idFilial = $_GET['idFilial'] ?: null;
             $promocao = $_GET['promocao'] ?: null;
+            $idPromocao = $_GET['id_promocao'] ?: null;
 
             $descricaoPromocao = null;
             $tipoPromocao = null;
@@ -66,7 +67,7 @@ class ImpressaoController extends Controller
 
             $filtros = [
                 'idFilial' => intval($idFilial),
-                'descricaoPromocao' => is_null($descricaoPromocao) ? null : strval($descricaoPromocao),
+                'id_promocao' => is_null($idPromocao) ? null : strval($idPromocao),
                 'tipoPromocao' => is_null($tipoPromocao) ? null : strval($tipoPromocao),
                 'idDepartamento' => is_null($idDepartamento) ? null : intval($idDepartamento),
                 'idSubdepartamento' => is_null($idSubdepartamento) ? null : intval($idSubdepartamento),

@@ -77,12 +77,12 @@ class ProdutoCadastro extends Entity
         return $this;
     }
 
-    public function getProduto(): ?string
+    public function getProduto(): string
     {
         return $this->produto;
     }
 
-    private function setProduto(?string $produto): self
+    private function setProduto(string $produto): self
     {
         $this->produto = $produto;
 
@@ -101,24 +101,24 @@ class ProdutoCadastro extends Entity
         return $this;
     }
 
-    public function getImagem(): ?string
+    public function getImagem(): string
     {
         return $this->imagem;
     }
 
-    private function setImagem(?string $imagem): self
+    private function setImagem(string $imagem): self
     {
         $this->imagem = $imagem;
 
         return $this;
     }
 
-    public function getCaminhoImagem(): ?string
+    public function getCaminhoImagem(): string
     {
         return $this->caminhoImagem;
     }
 
-    private function setCaminhoImagem(?string $caminhoImagem): self
+    private function setCaminhoImagem(string $caminhoImagem): self
     {
         $this->caminhoImagem = $caminhoImagem;
 

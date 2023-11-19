@@ -24,9 +24,10 @@ class FilialDAO extends DAO
     {
         return "SELECT
                 *
+                ,id as id_filial
                 ,CONCAT(numero,' - ',cidade) as filial
             FROM
-                filial";
+                filial order by id";
     }
 
     public function cadastrar(Filial $filial): bool
@@ -86,4 +87,5 @@ class FilialDAO extends DAO
             $id    
         );
     }
+
 }

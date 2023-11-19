@@ -8,14 +8,6 @@
             <input type="number" class="form-control" id="id" name="id" value="<?= $this->viewVar['filial']['id'] ?>" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Filial</label>
-            <input type="numeric" class="form-control" id="numero" name="numero" value="<?= $this->viewVar['filial']['numero'] ?>" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Empresa</label>
-            <input type="numeric" class="form-control" id="empresa" name="empresa" value="<?= $this->viewVar['filial']['empresa'] ?>" required>
-        </div>
-        <div class="mb-3">
             <label class="form-label">Cidade</label>
             <input type="text" class="form-control" id="cidade" name="cidade" value="<?= $this->viewVar['filial']['cidade'] ?>" required>
         </div>

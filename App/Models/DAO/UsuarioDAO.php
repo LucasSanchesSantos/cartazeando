@@ -37,6 +37,8 @@ class UsuarioDAO extends DAO
         return $resultado;
     }
 
+
+    
     public function cadastrar(Usuario $usuario): bool
     {
         $parametros = $usuario->toArray(true);
@@ -74,9 +76,11 @@ class UsuarioDAO extends DAO
     private function getSqlDadosUsuario(): string
     {
         return "SELECT
-                *
+                u.*
+                ,CONCAT(f.numero,' - ',f.cidade) as filial
             FROM
                 usuario u
+                left join filial f on f.id = u.id_filial
             WHERE
                 u.id = :id";
     }
@@ -91,11 +95,13 @@ class UsuarioDAO extends DAO
             u.cidade,
             u.usuario,
             tp.descricao AS tipo_formato,
-            tp2.descricao AS tipo_permissao
+            tp2.descricao AS tipo_permissao,
+            CONCAT(f.numero,' - ',f.cidade) as filial
         FROM
             usuario u
             INNER JOIN tipo_formato tp ON tp.id = u.id_tipo_formato
-            INNER JOIN tipo_permissao tp2 ON tp2.id = u.id_tipo_permissao ";
+            INNER JOIN tipo_permissao tp2 ON tp2.id = u.id_tipo_permissao 
+            left join filial f on f.id = u.id_filial";
     }
 
     private function getSqlFiliaisUsuarios(): string
@@ -114,5 +120,8 @@ class UsuarioDAO extends DAO
             $usuario    
         );
     }
+
+    
+
 
 }

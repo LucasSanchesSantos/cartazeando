@@ -7,8 +7,7 @@
     <table class="table table-hover" id="filial">
         <thead>
             <tr>
-                <th class="text-center align-middle">Número filial</th>
-                <th class="text-center align-middle">Empresa</th>
+                <th class="text-center align-middle">Id filial</th>
                 <th class="text-center align-middle">Cidade</th>
                 <th class="text-center align-middle">UF</th>
                 <th class="text-center align-middle">Editar</th>
@@ -18,8 +17,7 @@
         <tbody>
             <?php foreach ($this->getViewVar()['filial'] as $filial) { ?>
                 <tr>
-                    <td class="text-center align-middle"><?= $filial['numero'] ?></td>
-                    <td class="text-center align-middle"><?= $filial['empresa'] ?></td>
+                    <td class="text-center align-middle"><?= $filial['id_filial'] ?></td>
                     <td class="text-center align-middle"><?= $filial['cidade'] ?></td>
                     <td class="text-center align-middle"><?= $filial['uf'] ?></td>
                     <td class="text-center align-middle">

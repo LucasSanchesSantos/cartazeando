@@ -52,13 +52,15 @@
         
         <div class="mb-4">
             <label class="form-label">Parcelas totais</label>
-            <select class="form-control selectpicker" id="quantidadeParcelasTotal" name="quantidadeParcelasTotal" title="Selecione" data-live-search="true" required>
+            <!-- <select class="form-control selectpicker" id="quantidadeParcelasTotal" name="quantidadeParcelasTotal" title="Selecione" data-live-search="true" required>
                 <?php foreach ($this->viewVar['totalParcelas'] as $totalParcelas) { ?>
                     <option value="<?= "{$totalParcelas['parcela_ate']}"?>">
                         <?= strtoupper("{$totalParcelas['parcela_ate']}")?>
                     </option>
                 <?php } ?>
-            </select>
+            </select> -->
+            <input type="text" name="quantidadeParcelasTotal" class="form-control moeda"required>
+
         </div>
 
         <div class="mb-4">

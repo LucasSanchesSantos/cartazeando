@@ -7,12 +7,9 @@
     <table class="table table-hover" id="usuariosTable">
         <thead>
             <tr>
-                <th class="text-center align-middle">ID Filial</th>
-                <th class="text-center align-middle">Número da Filial</th>
-                <th class="text-center align-middle">Empresa</th>
-                <th class="text-center align-middle">Cidade</th>
+                <th class="text-center align-middle">Id filial</th>
+                <th class="text-center align-middle">Filial</th>
                 <th class="text-center align-middle">Usuario</th>
-                <th class="text-center align-middle">Formato</th>
                 <th class="text-center align-middle">Permissão</th>
                 <th class="text-center align-middle">Editar</th>
                 <th class="text-center align-middle">Deletar</th>
@@ -22,11 +19,8 @@
             <?php foreach ($this->getViewVar()['usuarios'] as $usuario) { ?>
                 <tr>
                     <td class="text-center align-middle"><?= $usuario['id_filial'] ?></td>
-                    <td class="text-center align-middle"><?= $usuario['numero_filial'] ?></td>
-                    <td class="text-center align-middle"><?= $usuario['id_empresa'] ?></td>
-                    <td class="text-center align-middle"><?= $usuario['cidade'] ?></td>
+                    <td class="text-center align-middle"><?= $usuario['filial'] ?></td>
                     <td class="text-center align-middle"><?= $usuario['usuario'] ?></td>
-                    <td class="text-center align-middle"><?= $usuario['tipo_formato'] ?></td>
                     <td class="text-center align-middle"><?= $usuario['tipo_permissao'] ?></td>
                     <td class="text-center align-middle">
                         <div class="d-flex justify-content-center">

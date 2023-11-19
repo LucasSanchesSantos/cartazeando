@@ -7,14 +7,6 @@
         <input type="text" class="form-control" id="id" name="id" placeholder="Digite o ID da nova filial." required>
     </div>
     <div class="mb-3">
-        <label for="numero" class="form-label">Número</label>
-        <input type="text" class="form-control" id="numero" name="numero" placeholder="Diginite o número da nova filial" required>
-    </div>
-    <div class="mb-3">
-        <label for="empresa" class="form-label">Empresa</label>
-        <input type="text" class="form-control" id="empresa" name="empresa" placeholder="Digite o número da empresa." required>
-    </div>
-    <div class="mb-3">
         <label for="cidade" class="form-label">Cidade</label>
         <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite o nome da cidade da filial" required>
     </div>

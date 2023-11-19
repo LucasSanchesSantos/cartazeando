@@ -38,40 +38,37 @@ class ProdutoDAO extends DAO
 
     private function getSqlProdutosPorFiltros(array $parametros): string
     {
-        $clausulaDescricaoPromocao = empty($parametros['descricaoPromocao']) ? '' : 'AND promocao = :descricaoPromocao';
-        $clausulaTipoPromocao = empty($parametros['tipoPromocao']) ? '' : 'AND tipo = :tipoPromocao';
-        $clausulaIdDepartamento = empty($parametros['idDepartamento']) ? '' : 'AND id_departamento = :idDepartamento';
-        $clausulaIdSubdepartamento = empty($parametros['idSubdepartamento']) ? '' : 'AND id_sub_departamento = :idSubdepartamento';
-        $clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND id_produto = :idProduto';
+        $clausulaIdPromocao = empty($parametros['id_promocao']) ? '' : 'AND p.id = :id_promocao';
+        // $clausulaTipoPromocao = empty($parametros['tipoPromocao']) ? '' : 'AND tipo = :tipoPromocao';
+        // $clausulaIdDepartamento = empty($parametros['idDepartamento']) ? '' : 'AND id_departamento = :idDepartamento';
+        // $clausulaIdSubdepartamento = empty($parametros['idSubdepartamento']) ? '' : 'AND id_sub_departamento = :idSubdepartamento';
+        $clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND pm.id_produto = :idProduto';
 
         return "SELECT 
-        *
-    FROM 
-        (
-            SELECT
-                *
-                ,CONCAT('https://s3-sa-east-1.amazonaws.com/static.gazinatacado.com.br/thumb/', LPAD(id_produto, 6, 0), LPAD            (id_grade_x, 4, 0), '01150.jpg') AS imagem
-            FROM
-                produto
-            WHERE
-                id_filial = :idFilial
-                $clausulaDescricaoPromocao
-                $clausulaTipoPromocao
-                $clausulaIdDepartamento
-                $clausulaIdSubdepartamento
-                $clausulaIdProduto
-        ) p
-    LEFT JOIN (
-            SELECT
-                u.id_filial
-                ,u.numero_filial
-                ,CONCAT(LPAD(id_empresa,2,'0'),'.',LPAD(u.numero_filial,3,'0'), ' - ',u.cidade) AS filial
-                ,tf.descricao AS tipo_formato
-            FROM usuario u
-            LEFT JOIN tipo_formato tf ON tf.id = u.id_tipo_formato
-            LEFT JOIN tipo_permissao tp ON tp.id = u.id_tipo_permissao
-            WHERE
-                u.id_tipo_permissao != 2
-            GROUP BY 1,2,3,4) tf on tf.id_filial = p.id_filial";
+                    p.*
+                    ,p.id_cor          as id_grade_x
+	                ,p.id_voltagem     as id_grade_y
+                    ,c.descricao       as cor
+                    ,v.descricao       as voltagem
+                    ,pm.data_inicio    as data_inicial
+                    ,pm.data_fim       as data_final
+                    ,pm.parcela_inicio as prazo_inicial
+                    ,pm.parcela_fim    as prazo_final
+                    ,pm.valor_promocao as preco_a_prazo
+                    ,'Sem Entrada'     as tipo_prazo_promocao
+                    ,tp.descricao      as tipo
+                    ,pm.id_filial      as id_filial
+                    ,pm.descricao      as promocao
+                    ,pm.id             as id_promocao
+                    ,concat('http://localhost:8082/',p.caminho_imagem) as imagem
+                from produtonew p 
+                left join cor c       on c.id = p.id_cor 
+                left join voltagem v  on v.id = p.id_voltagem 
+                left join promocao pm on pm.id_produto = p.id_produto and pm.id_cor = p.id_cor  and pm.id_voltagem = p.id_voltagem 
+                left join tipo_pagamento tp on tp.id = id_tipo_pagamento 
+                where 
+                    id_filial = :idFilial
+                    $clausulaIdPromocao
+                    $clausulaIdProduto";
     }
 }
