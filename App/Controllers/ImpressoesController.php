@@ -32,5 +32,14 @@ class ImpressoesController extends Controller
         } 
     }
 
+    public function index(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+
+        self::setViewParam('impressoes', $impressaoDAO->listar());
+
+        $this->render('RelatorioImpressoes/index');
+    }
+
   
 }
