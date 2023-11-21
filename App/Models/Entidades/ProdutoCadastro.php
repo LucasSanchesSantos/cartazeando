@@ -10,10 +10,10 @@ class ProdutoCadastro extends Entity
     protected int $idProduto;
     protected int $idCor;
     protected int $idVoltagem;
-    protected string $produto;
-    protected float $precoVenda;    
-    protected string $imagem;
-    protected string $caminhoImagem;
+    protected ?string $produto;
+    protected ?float $precoVenda;    
+    //protected ?string $imagem;
+    protected ?string $caminhoImagem;
 
 
     public function __construct(array $produto)
@@ -24,7 +24,7 @@ class ProdutoCadastro extends Entity
         $this->setIdVoltagem($produto['id_voltagem']);
         $this->setProduto($produto['produto']);
         $this->setPrecoVenda(round(floatval($produto['preco_venda']), 2));
-        $this->setImagem($produto['imagem']);
+        //$this->setImagem($produto['imagem']);
         $this->setCaminhoImagem($produto['caminho_imagem']);
 
     }
@@ -101,24 +101,24 @@ class ProdutoCadastro extends Entity
         return $this;
     }
 
-    public function getImagem(): string
-    {
-        return $this->imagem;
-    }
+    // public function getImagem(): ?string
+    // {
+    //     return $this->imagem;
+    // }
 
-    private function setImagem(string $imagem): self
-    {
-        $this->imagem = $imagem;
+    // private function setImagem(?string $imagem): self
+    // {
+    //     $this->imagem = $imagem;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getCaminhoImagem(): string
+    public function getCaminhoImagem(): ?string
     {
         return $this->caminhoImagem;
     }
 
-    private function setCaminhoImagem(string $caminhoImagem): self
+    private function setCaminhoImagem(?string $caminhoImagem): self
     {
         $this->caminhoImagem = $caminhoImagem;
 

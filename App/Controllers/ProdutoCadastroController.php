@@ -61,7 +61,7 @@ class ProdutoCadastroController extends Controller
         $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
 
         $path = 'App/Views/ImagensProdutos/';
-        $caminhoImagem = 'App/Views/ImagensProdutos/' . $novoNomeDoArquivo . "." . $extensao;
+        $caminhoImagem = $path . $novoNomeDoArquivo . "." . $extensao;
 
         move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
 
@@ -72,7 +72,6 @@ class ProdutoCadastroController extends Controller
             'id_voltagem' => intval($_POST['id_voltagem']),
             'produto' => strval($_POST['produto']),
             'preco_venda' => floatval($_POST['preco_venda']),
-            'imagem' => strval($novoNomeDoArquivo),
             'caminho_imagem' => strval($caminhoImagem),
         ]);
 
@@ -110,13 +109,35 @@ class ProdutoCadastroController extends Controller
 
     private function getDadosProdutoCadastro(): array
     {
+        $arquivo = $_FILES['imagem'];
+
+        $caminhoImagem = "";
+
+        if($arquivo['error']){
+            $produtoCadastroDAO = new ProdutoCadastroDAO();
+
+            $dadosProduto = $produtoCadastroDAO->getDadosProdutoCadastro($_POST['id']);
+            $caminhoImagem = $dadosProduto['caminho_imagem'];
+
+        }else{
+            $nomeDoArquivo = $arquivo['name'];
+            $novoNomeDoArquivo = uniqid();
+            $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
+    
+            $path = 'App/Views/ImagensProdutos/';
+            $caminhoImagem = $path . $novoNomeDoArquivo . "." . $extensao;
+    
+            move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
+        }
+    
         return [
             'id' => intval($_POST['id']),
             'id_produto' => intval($_POST['id_produto']),
             'id_cor' => intval($_POST['id_cor']),
             'id_voltagem' => intval($_POST['id_voltagem']),
             'produto' => strval($_POST['produto']),
-            'preco_venda' => floatval($_POST['preco_venda'])
+            'preco_venda' => floatval($_POST['preco_venda']),
+            'caminho_imagem' => strval($caminhoImagem),
         ];
     }
 

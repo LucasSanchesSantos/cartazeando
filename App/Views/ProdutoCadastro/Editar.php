@@ -1,6 +1,6 @@
 <h3 class="text-center mb-4"><i class="bi bi-person-gear"></i> Produto</h3>
 
-<form action="<?= URL ?>produtoCadastro/editar" method="post">
+<form action="<?= URL ?>produtoCadastro/editar" method="post" enctype="multipart/form-data">
     <input type="hidden" id="id" name="id" value=<?= !empty($_GET['id']) ? intval($_GET['id']) : intval($produtoCadastro['id']) ?>>
     
         <div class="mb-3">
@@ -44,6 +44,11 @@
             <input type="text" class="form-control" id="preco_venda" name="preco_venda" value="<?= $this->viewVar['produtoCadastro']['preco_venda'] ?>" required>
         </div>
     
+        <div class="mb-3">
+            <label class="form-label">Preço venda</label>
+            <input type="file" class="form-control" id="imagem" name="imagem" value="<?= $this->viewVar['produtoCadastro']['caminho_imagem'] ?>">
+        </div>
+
         <div class="text-end">
             <button type="submit" class="btn btn-primary bg-dark-blue">Salvar</button>
         </div>
