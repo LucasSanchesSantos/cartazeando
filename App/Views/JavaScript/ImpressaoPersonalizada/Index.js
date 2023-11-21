@@ -62,11 +62,10 @@ function gerarA4(dadosProdutoPromocao) {
 
     preco = converterStringEmNumeroFormatoAmericano(preco);
 
-    let precoParcela = (preco / parseInt(dadosProdutoPromocao.prazo_final)).toFixed(2);
+    let precoParcela = (preco / (parseInt(dadosProdutoPromocao.prazo_final) + parseInt(dadosProdutoPromocao.prazo_inicial))).toFixed(2);
 
     preco = converterStringEmMoeda(preco);
-    preco = converterStringEmMoeda(precoParcela);
-
+    //precoParcela = converterStringEmMoeda(precoParcela);
 
     precoParcela = (+precoParcela).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     precoParcela = precoParcela.replace('R$', '');
@@ -175,8 +174,7 @@ function gerarA3(produtoPromocao) {
     
     preco = converterStringEmNumeroFormatoAmericano(preco);
 
-    let precoParcela = (preco / produtoPromocao.prazo_final).toFixed(2);
-
+    let precoParcela = (preco / (parseInt(produtoPromocao.prazo_final) + parseInt(produtoPromocao.prazo_inicial))).toFixed(2);
 
     preco = (+preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     preco = preco.replace('R$', '');

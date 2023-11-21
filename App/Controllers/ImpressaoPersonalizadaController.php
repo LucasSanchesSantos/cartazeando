@@ -41,6 +41,12 @@ class ImpressaoPersonalizadaController extends Controller
             $dadosProdutos = $impressaoDAO->getDescricaoProduto($_GET['idprodutoxy']);
             $dadosFilial = $impressaoDAO->getDadosFilial($_GET['idfilial']);
             
+            if ($_GET['quantidadeParcelasEntrada'] == 1) {
+                $quantidadeParcelaTotal = $_GET['quantidadeParcelasTotal'] - 1;
+            }else{
+                $quantidadeParcelaTotal = $_GET['quantidadeParcelasTotal'];
+            }
+
             http_response_code(200);
 
             echo json_encode([
@@ -56,7 +62,7 @@ class ImpressaoPersonalizadaController extends Controller
                 'preco_partida' => $_GET['valorAtual'],
                 'preco_a_prazo' => $_GET['valorAtual'],
                 'prazo_inicial' => $_GET['quantidadeParcelasEntrada'],
-                'prazo_final' => $_GET['quantidadeParcelasTotal'],
+                'prazo_final' => $quantidadeParcelaTotal,
                 'tipo' => $_GET['tipo'],
                 'data_inicial' => $_GET['validoDe'],
                 'data_final' => $_GET['validoAte'],
