@@ -41,7 +41,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Preço venda</label>
-            <input type="text" class="form-control" id="preco_venda" name="preco_venda" value="<?= $this->viewVar['produtoCadastro']['preco_venda'] ?>" required>
+            <input type="text" class="form-control moeda" id="preco_venda" name="preco_venda" value="<?= number_format($this->viewVar['produtoCadastro']['preco_venda'],2) ?>" required>
         </div>
     
         <div class="mb-3">

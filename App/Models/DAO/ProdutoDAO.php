@@ -67,6 +67,7 @@ class ProdutoDAO extends DAO
                 left join promocao pm on pm.id_produto = p.id_produto and pm.id_cor = p.id_cor  and pm.id_voltagem = p.id_voltagem 
                 left join tipo_pagamento tp on tp.id = id_tipo_pagamento 
                 where 
+                    pm.id_situacao = 1
                     id_filial = :idFilial
                     $clausulaIdPromocao
                     $clausulaIdProduto";

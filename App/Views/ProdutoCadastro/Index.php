@@ -23,7 +23,7 @@
                     <td class="text-center align-middle"><?= $produtoCadastro['cor'] ?></td>
                     <td class="text-center align-middle"><?= $produtoCadastro['voltagem'] ?></td>
                     <td class="text-center align-middle"><?= $produtoCadastro['produto'] ?></td>
-                    <td class="text-center align-middle"><?= $produtoCadastro['preco_venda'] ?></td>
+                    <td class="text-center align-middle">R$ <?= number_format($produtoCadastro['preco_venda'], 2, ',', '.')?></td>
                     <td class="text-center align-middle">
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="<?= URL ?>produtoCadastro/edicao?id=<?= $produtoCadastro['id'] ?>">

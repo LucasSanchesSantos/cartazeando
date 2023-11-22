@@ -12,19 +12,18 @@ class ProdutoCadastro extends Entity
     protected int $idVoltagem;
     protected ?string $produto;
     protected ?float $precoVenda;    
-    //protected ?string $imagem;
     protected ?string $caminhoImagem;
-
 
     public function __construct(array $produto)
     {
+        $preco_formatado = $this->formatarValorEmFormatoAmericano($produto['preco_venda']);
+
         $this->setId($produto['id']);
         $this->setIdProduto($produto['id_produto']);
         $this->setIdCor($produto['id_cor']);
         $this->setIdVoltagem($produto['id_voltagem']);
         $this->setProduto($produto['produto']);
-        $this->setPrecoVenda(round(floatval($produto['preco_venda']), 2));
-        //$this->setImagem($produto['imagem']);
+        $this->setPrecoVenda(round(floatval($preco_formatado), 2));
         $this->setCaminhoImagem($produto['caminho_imagem']);
 
     }
@@ -101,18 +100,6 @@ class ProdutoCadastro extends Entity
         return $this;
     }
 
-    // public function getImagem(): ?string
-    // {
-    //     return $this->imagem;
-    // }
-
-    // private function setImagem(?string $imagem): self
-    // {
-    //     $this->imagem = $imagem;
-
-    //     return $this;
-    // }
-
     public function getCaminhoImagem(): ?string
     {
         return $this->caminhoImagem;
@@ -123,5 +110,12 @@ class ProdutoCadastro extends Entity
         $this->caminhoImagem = $caminhoImagem;
 
         return $this;
+    }
+
+    public function formatarValorEmFormatoAmericano($valor){
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+
+        return $valor;
     }
 }

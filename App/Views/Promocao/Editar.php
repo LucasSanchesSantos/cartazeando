@@ -69,7 +69,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Preço promoção</label>
-            <input type="text" class="form-control" id="valor_promocao" name="valor_promocao" value="<?= $this->viewVar['promocao']['valor_promocao'] ?>" required>
+            <input type="text" class="form-control moeda" id="valor_promocao" name="valor_promocao" value="<?=  number_format($this->viewVar['promocao']['valor_promocao'],2) ?>" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Data início</label>

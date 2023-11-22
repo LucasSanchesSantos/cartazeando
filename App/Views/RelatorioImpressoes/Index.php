@@ -23,7 +23,7 @@
                     <td class="text-center align-middle"><?= $impressoes['id_produto'] ?></td>
                     <td class="text-center align-middle"><?= $impressoes['produto'] ?></td>
                     <td class="text-center align-middle"><?= $impressoes['tipo_pagamento'] ?></td>
-                    <td class="text-center align-middle"><?= $impressoes['valor_promocao'] ?></td>
+                    <td class="text-center align-middle">R$ <?= number_format($impressoes['valor_promocao'], 2, ',', '.')?></td>
                     <td class="text-center align-middle"><?= date('d/m/Y', strtotime($impressoes['data_impressao'])) ?></td>
                 </tr>
             <?php } ?>

@@ -67,7 +67,7 @@
 
     <div class="mb-3">
         <label for="valor_promocao" class="form-label">Preço venda</label>
-        <input type="text" class="form-control" id="valor_promocao" name="valor_promocao" placeholder="Digite o valor da promoção" required>
+        <input type="text" class="form-control moeda" id="valor_promocao" name="valor_promocao" placeholder="Digite o valor da promoção" required>
     </div>
     <div class="mb-3">
         <label for="data_inicio" class="form-label">Data início</label>

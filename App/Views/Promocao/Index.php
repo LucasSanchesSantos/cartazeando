@@ -17,8 +17,7 @@
                 <th class="text-center align-middle">Data início</th>
                 <th class="text-center align-middle">Data fim</th>
                 <th class="text-center align-middle">Tipo promoção</th>
-                <th class="text-center align-middle">Parcela início</th>
-                <th class="text-center align-middle">Parcela fim</th>
+                <th class="text-center align-middle">Parcelas</th>
                 <th class="text-center align-middle">Situacão</th>
                 <th class="text-center align-middle">Editar</th>
                 <th class="text-center align-middle">Deletar</th>
@@ -33,11 +32,10 @@
                     <td class="text-center align-middle"><?= $promocao['cor'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['voltagem'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['filial'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['valor_promocao'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['data_inicio'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['data_fim'] ?></td>
+                    <td class="text-center align-middle">R$ <?= number_format($promocao['valor_promocao'], 2, ',', '.')?></td>
+                    <td class="text-center align-middle"><?= date('d/m/Y', strtotime($promocao['data_inicio'])) ?></td>
+                    <td class="text-center align-middle"><?= date('d/m/Y', strtotime($promocao['data_fim'])) ?></td>
                     <td class="text-center align-middle"><?= $promocao['tipo_pagamento'] ?></td>
-                    <td class="text-center align-middle"><?= $promocao['parcela_inicio'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['parcela_fim'] ?></td>
                     <td class="text-center align-middle"><?= $promocao['situacao'] ?></td>
                     <td class="text-center align-middle">

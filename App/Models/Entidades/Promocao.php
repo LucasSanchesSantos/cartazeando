@@ -22,6 +22,8 @@ class Promocao extends Entity
     protected int $idSituacao;
     
     public function __construct(array $promocao){
+        $preco_formatado = $this->formatarValorEmFormatoAmericano($promocao['valor_promocao']);
+
         $this->setId($promocao['id']);
         $this->setDescricao($promocao['descricao']);
         $this->setDataCadastro($promocao['data_cadastro']);
@@ -29,7 +31,7 @@ class Promocao extends Entity
         $this->setIdCor($promocao['id_cor']);
         $this->setIdVoltagem($promocao['id_voltagem']);
         $this->setIdFilial($promocao['id_filial']);
-        $this->setValorPromocao(round(floatval($promocao['valor_promocao']), 2));
+        $this->setValorPromocao(round(floatval($preco_formatado), 2));
         $this->setDataInicio($promocao['data_inicio']);
 		$this->setDataFim($promocao['data_fim']);
         $this->setIdTipoPagamento($promocao['id_tipo_pagamento']);
@@ -204,5 +206,12 @@ class Promocao extends Entity
         $this->idSituacao = $idSituacao;
 
         return $this;
+    }
+
+    public function formatarValorEmFormatoAmericano($valor){
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+
+        return $valor;
     }
 }

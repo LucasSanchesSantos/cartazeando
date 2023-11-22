@@ -41,7 +41,7 @@
     </div>
     <div class="mb-3">
         <label for="numeroFilial" class="form-label">Preço venda</label>
-        <input type="numeric" class="form-control" id="preco_venda" name="preco_venda" placeholder="Digite o preço do novo produto" required>
+        <input type="text" class="form-control moeda" id="preco_venda" name="preco_venda" placeholder="Digite o preço do novo produto" required>
     </div>
     <div class="mb-3">
         <p>

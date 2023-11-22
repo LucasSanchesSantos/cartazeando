@@ -71,7 +71,7 @@ class ProdutoCadastroController extends Controller
             'id_cor' => intval($_POST['id_cor']),
             'id_voltagem' => intval($_POST['id_voltagem']),
             'produto' => strval($_POST['produto']),
-            'preco_venda' => floatval($_POST['preco_venda']),
+            'preco_venda' => $_POST['preco_venda'],
             'caminho_imagem' => strval($caminhoImagem),
         ]);
 
@@ -129,6 +129,8 @@ class ProdutoCadastroController extends Controller
     
             move_uploaded_file($arquivo['tmp_name'],$path . $novoNomeDoArquivo . "." . $extensao);
         }
+
+        $preco_formatado = $this->formatarValorEmFormatoAmericano($_POST['preco_venda']);
     
         return [
             'id' => intval($_POST['id']),
@@ -136,7 +138,7 @@ class ProdutoCadastroController extends Controller
             'id_cor' => intval($_POST['id_cor']),
             'id_voltagem' => intval($_POST['id_voltagem']),
             'produto' => strval($_POST['produto']),
-            'preco_venda' => floatval($_POST['preco_venda']),
+            'preco_venda' => $preco_formatado,
             'caminho_imagem' => strval($caminhoImagem),
         ];
     }
@@ -155,5 +157,12 @@ class ProdutoCadastroController extends Controller
         }
 
         $this->redirect('produtoCadastro', "index");
+    }
+
+    public function formatarValorEmFormatoAmericano($valor){
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+
+        return $valor;
     }
 }

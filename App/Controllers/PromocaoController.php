@@ -83,7 +83,7 @@ class PromocaoController extends Controller
             'id_cor' => intval($_POST['id_cor']),
             'id_voltagem' => intval($_POST['id_voltagem']),
             'id_filial' => intval($_POST['id_filial']),
-            'valor_promocao' => floatval($_POST['valor_promocao']),
+            'valor_promocao' => $_POST['valor_promocao'],
             'data_inicio' => strval($_POST['data_inicio']),
             'data_fim' => strval($_POST['data_fim']),
             'id_tipo_pagamento' => intval($_POST['id_tipo_pagamento']),
@@ -126,6 +126,9 @@ class PromocaoController extends Controller
 
     private function getDadosPromocao(): array
     {
+
+        $preco_formatado = $this->formatarValorEmFormatoAmericano($_POST['valor_promocao']);
+
         return [
             'id' => intval($_POST['id']),
             'descricao' => strval($_POST['descricao']),
@@ -134,7 +137,7 @@ class PromocaoController extends Controller
             'id_cor' => intval($_POST['id_cor']),
             'id_voltagem' => intval($_POST['id_voltagem']),
             'id_filial' => intval($_POST['id_filial']),
-            'valor_promocao' => floatval($_POST['valor_promocao']),
+            'valor_promocao' => $_POST['valor_promocao'],
             'data_inicio' => strval($_POST['data_inicio']),
             'data_fim' => strval($_POST['data_fim']),
             'id_tipo_pagamento' => intval($_POST['id_tipo_pagamento']),
@@ -158,5 +161,12 @@ class PromocaoController extends Controller
         }
 
         $this->redirect('promocao', "index");
+    }
+    
+    public function formatarValorEmFormatoAmericano($valor){
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+
+        return $valor;
     }
 }
