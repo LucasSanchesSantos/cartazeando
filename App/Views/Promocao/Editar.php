@@ -94,12 +94,32 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Parcela início</label>
-            <input type="text" class="form-control" id="parcela_inicio" name="parcela_inicio" value="<?= $this->viewVar['promocao']['parcela_inicio'] ?>" required>
+            <label class="form-label">Venda com entrada?</label>
+            <select class="form-select" id="parcela_inicio" name="parcela_inicio" required>
+            <?php
+                foreach ($this->viewVar['pagementoEntrada'] as $pagamentoEntrada) {
+            ?>
+                <option value=<?= $pagamentoEntrada['id_value'] ?> <?= $this->viewVar['promocao']['parcela_inicio'] == $pagamentoEntrada['id_value'] ? 'selected' : '' ?>>
+                    <?= $pagamentoEntrada['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Parcela fim</label>
-            <input type="text" class="form-control" id="parcela_fim" name="parcela_fim" value="<?= $this->viewVar['promocao']['parcela_fim'] ?>" required>
+            <label class="form-label">Parcelas totais</label>
+            <select class="form-select" id="parcela_fim" name="parcela_fim" required>
+            <?php
+                foreach ($this->viewVar['qtdParcela'] as $pagamentoEntrada) {
+            ?>
+                <option value=<?= $pagamentoEntrada['qtd_parcelas'] ?> <?= $this->viewVar['promocao']['parcela_fim'] == $pagamentoEntrada['qtd_parcelas'] ? 'selected' : '' ?>>
+                    <?= $pagamentoEntrada['qtd_parcelas'] ?> 
+                </option>
+            <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Situação</label>

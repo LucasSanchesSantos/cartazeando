@@ -93,12 +93,34 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="parcela_inicio" class="form-label">Parcela início</label>
-        <input type="text" class="form-control" id="parcela_inicio" name="parcela_inicio" required>
+        <label class="form-label">Venda com entrada?</label>
+        <select class="form-select" id="parcela_inicio" name="parcela_inicio" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['pagementoEntrada'] as $pagementoEntrada) {
+            ?>
+                <option value=<?= $pagementoEntrada['id_value'] ?>>
+                    <?= $pagementoEntrada['descricao'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="mb-3">
-        <label for="parcela_fim" class="form-label">Parcela fim</label>
-        <input type="text" class="form-control" id="parcela_fim" name="parcela_fim" required>
+        <label class="form-label">Venda com entrada?</label>
+        <select class="form-select" id="parcela_fim" name="parcela_fim" required>
+            <option value="">Selecione</option>
+            <?php
+                foreach ($this->viewVar['qtdParcela'] as $pagementoEntrada) {
+            ?>
+                <option value=<?= $pagementoEntrada['qtd_parcelas'] ?>>
+                    <?= $pagementoEntrada['qtd_parcelas'] ?>
+                </option>
+            <?php
+                }
+            ?>
+        </select>
     </div>
     <div class="text-end">
         <button type="submit" class="btn btn-primary bg-dark-blue">Salvar</button>

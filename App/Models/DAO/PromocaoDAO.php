@@ -31,13 +31,15 @@ class PromocaoDAO extends DAO
             ,s.descricao as situacao
             ,CONCAT(f.numero, ' - ', f.cidade) as filial
             ,CONCAT(pn.id_produto, ' - ', pn.produto) as produto
+            ,pe.descricao as entrada
         from promocao p
         LEFT join cor c on c.id = p.id_cor
         left join voltagem v on v.id = p.id_voltagem
         left join tipo_pagamento t on t.id = p.id_tipo_pagamento
         left join situacao s on s.id = p.id_situacao
         left join filial f on f.id = p.id_filial
-        left join produtonew pn on pn.id_produto = p.id_produto";
+        left join produtonew pn on pn.id_produto = p.id_produto
+        left join pagamento_entrada pe on pe.id_value = p.parcela_inicio";
     }
 
     public function cadastrar(Promocao $promocao): bool
@@ -97,4 +99,5 @@ class PromocaoDAO extends DAO
             $promocao    
         );
     }
+
 }

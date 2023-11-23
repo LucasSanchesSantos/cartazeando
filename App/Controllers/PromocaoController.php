@@ -6,12 +6,15 @@ use App\Abstractions\Controller;
 use App\Lib\Sessao;
 use App\Models\DAO\CorDAO;
 use App\Models\DAO\FilialDAO;
+use App\Models\DAO\PagamentoEntradaDAO;
 use App\Models\DAO\ProdutoCadastroDAO;
 use App\Models\DAO\PromocaoDAO;
+use App\Models\DAO\QtdParcelaDAO;
 use App\Models\DAO\SituacaoDAO;
 use App\Models\DAO\TipoPagamentoDAO;
 use App\Models\DAO\VoltagemDAO;
 use App\Models\Entidades\Promocao;
+use Dotenv\Parser\Parser;
 
 class PromocaoController extends Controller
 {
@@ -43,6 +46,8 @@ class PromocaoController extends Controller
         $filialDAO = new FilialDAO();
         $situacaoDAO = new SituacaoDAO();
         $produtoCadastroDAO = new ProdutoCadastroDAO();
+        $qtdParcelaDAO = new QtdParcelaDAO();
+        $PagementoEntrada = new PagamentoEntradaDAO();
 
         self::setViewParam('promocao', $promocaoDAO->getDadosPromocao($_GET['id']));
         self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
@@ -51,6 +56,8 @@ class PromocaoController extends Controller
         self::setViewParam('filial', $filialDAO->listar());
         self::setViewParam('situacao', $situacaoDAO->listar());
         self::setViewParam('produtoCadastro', $produtoCadastroDAO->listarCadastroPromocao());
+        self::setViewParam('qtdParcela', $qtdParcelaDAO->listar());
+        self::setViewParam('pagementoEntrada', $PagementoEntrada->listar());
 
         $this->render('promocao/editar');
     }
@@ -62,12 +69,16 @@ class PromocaoController extends Controller
         $voltagemDAO = new VoltagemDAO();
         $filialDAO = new FilialDAO();
         $produtoCadastroDAO = new ProdutoCadastroDAO();
+        $qtdParcelaDAO = new QtdParcelaDAO();
+        $PagementoEntrada = new PagamentoEntradaDAO();
 
         self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
         self::setViewParam('cor', $corDAO->listar());
         self::setViewParam('voltagem', $voltagemDAO->listar());
         self::setViewParam('filial', $filialDAO->listar());
         self::setViewParam('produtoCadastro', $produtoCadastroDAO->listarCadastroPromocao());
+        self::setViewParam('qtdParcela', $qtdParcelaDAO->listar());
+        self::setViewParam('pagementoEntrada', $PagementoEntrada->listar());
 
         $this->render('promocao/cadastrar');
 
