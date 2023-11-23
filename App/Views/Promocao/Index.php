@@ -9,7 +9,7 @@
             <tr>
                 <th class="text-center align-middle">Id promoção</th>
                 <th class="text-center align-middle">Descrição</th>
-                <th class="text-center align-middle">Código do produto</th>
+                <th class="text-center align-middle">Produto</th>
                 <th class="text-center align-middle">Cor</th>
                 <th class="text-center align-middle">Voltagem</th>
                 <th class="text-center align-middle">Filial</th>
