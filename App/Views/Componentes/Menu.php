@@ -73,7 +73,7 @@
                                 <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Promocao/index"><i class="text-dark-blue bi bi-tags-fill me-2"></i>Promoções</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/index"><i class="text-dark-blue bi bi-tags-fill me-2"></i>Relatorio de impressoes</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/index"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Relatorio de impressoes</a>
                             </li>
                         <?php
                             }
