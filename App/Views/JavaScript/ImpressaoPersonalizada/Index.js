@@ -64,8 +64,11 @@ function gerarA4(dadosProdutoPromocao) {
 
     let precoParcela = (preco / (parseInt(dadosProdutoPromocao.prazo_final) + parseInt(dadosProdutoPromocao.prazo_inicial))).toFixed(2);
 
+    if (dadosProdutoPromocao.tipo == 'A Vista'){
+        precoParcela = preco;
+    }
+
     preco = converterStringEmMoeda(preco);
-    //precoParcela = converterStringEmMoeda(precoParcela);
 
     precoParcela = (+precoParcela).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     precoParcela = precoParcela.replace('R$', '');
@@ -74,7 +77,7 @@ function gerarA4(dadosProdutoPromocao) {
     let tipo = {
         "A Vista": "À Vista",
         "Cartão": "Cartão de Crédito",
-        "Carteira": "Carteira"
+        "Carteira": "Carnê"
     };
     let dataInicial = moment(dadosProdutoPromocao.data_inicial, 'YYYY-MM-DD').format('DD/MM/YYYY');
     let dataFinal = moment(dadosProdutoPromocao.data_final, 'YYYY-MM-DD').format('DD/MM/YYYY');
@@ -176,6 +179,10 @@ function gerarA3(produtoPromocao) {
 
     let precoParcela = (preco / (parseInt(produtoPromocao.prazo_final) + parseInt(produtoPromocao.prazo_inicial))).toFixed(2);
 
+    if (produtoPromocao.tipo == 'A Vista'){
+        precoParcela = preco;
+    }
+
     preco = (+preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     preco = preco.replace('R$', '');
 
@@ -186,7 +193,7 @@ function gerarA3(produtoPromocao) {
     let tipo = {
         "A Vista": "À Vista",
         "Cartão": "Cartão de Crédito",
-        "Carteira": "Carteira"
+        "Carteira": "Carnê"
     };
     let dataInicial = moment(produtoPromocao.data_inicial, 'YYYY-MM-DD').format('DD/MM/YYYY');
     let dataFinal = moment(produtoPromocao.data_final, 'YYYY-MM-DD').format('DD/MM/YYYY');

@@ -52,28 +52,26 @@
         
         <div class="mb-4">
             <label class="form-label">Parcelas totais</label>
-            <!-- <select class="form-control selectpicker" id="quantidadeParcelasTotal" name="quantidadeParcelasTotal" title="Selecione" data-live-search="true" required>
-                <?php foreach ($this->viewVar['totalParcelas'] as $totalParcelas) { ?>
-                    <option value="<?= "{$totalParcelas['parcela_ate']}"?>">
-                        <?= strtoupper("{$totalParcelas['parcela_ate']}")?>
+            <select class="form-select" id="quantidadeParcelasTotal" name="quantidadeParcelasTotal" required>
+                <option value="">Selecione</option>
+                <?php
+                    foreach ($this->viewVar['qtdParcela'] as $pagementoEntrada) {
+                ?>
+                    <option value=<?= $pagementoEntrada['qtd_parcelas'] ?>>
+                        <?= $pagementoEntrada['qtd_parcelas'] ?>
                     </option>
-                <?php } ?>
-            </select> -->
-            <input type="text" name="quantidadeParcelasTotal" class="form-control moeda"required>
-
+                <?php
+                    }
+                ?>
+            </select>
         </div>
 
         <div class="mb-4">
             <label class="form-label">Tipo promoção</label>
             <select class="form-control selectpicker" id="tipo" name="tipo" title="Selecione" required>
-                <?php if($_POST){ ?>
-                    <option value="<?= $_POST['tipo']?>">
-                        <?= $_POST['tipo']?>
-                    </option>
-                <?php }?>
-                <option value='À vista'>À vista</option>
+                <option value='A Vista'>À vista</option>
                 <option value='Cartão'>Cartão</option>
-                <option value='Carteira'>Carteira</option>
+                <option value='Carteira'>Carnê</option>
             </select>
         </div>
 

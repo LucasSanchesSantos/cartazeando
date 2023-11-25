@@ -108,7 +108,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label class="form-label">Venda com entrada?</label>
+        <label class="form-label">Quantidade de parcelas totais</label>
         <select class="form-select" id="parcela_fim" name="parcela_fim" required>
             <option value="">Selecione</option>
             <?php

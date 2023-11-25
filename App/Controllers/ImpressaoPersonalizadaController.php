@@ -6,6 +6,8 @@ use App\Abstractions\Controller;
 use App\Lib\Sessao;
 use App\Models\Constants\TipoPermissao;
 use App\Models\DAO\ImpressaoPersonalizadaDAO;
+use App\Models\DAO\QtdParcelaDAO;
+use App\Models\DAO\TipoPagamentoDAO;
 use Exception;
 
 class ImpressaoPersonalizadaController extends Controller
@@ -13,6 +15,8 @@ class ImpressaoPersonalizadaController extends Controller
     public function index(): void
     {
         $impressaoPersonalizadaDAO = new ImpressaoPersonalizadaDAO();
+        $qtdParcelaDAO = new QtdParcelaDAO();
+        $tipoPagamentoDAO = new TipoPagamentoDAO();
 
         $usuario = Sessao::getUsuario();
 
@@ -25,6 +29,8 @@ class ImpressaoPersonalizadaController extends Controller
         self::setViewParam('tiposCartazes', $impressaoPersonalizadaDAO->getTiposCartazes());
         self::setViewParam('produtos', $impressaoPersonalizadaDAO->getProdutos());
         self::setViewParam('filiais', $filiais);
+        self::setViewParam('qtdParcela', $qtdParcelaDAO->listar());
+        self::setViewParam('tipoPagamento', $tipoPagamentoDAO->listar());
 
         $this->render('impressaoPersonalizada/index');
     }
