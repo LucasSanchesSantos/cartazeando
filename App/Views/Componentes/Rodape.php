@@ -50,6 +50,7 @@
 
 <script src="<?= PATH_JS ?>Componentes/Rodape.js"></script>
 <script src="<?= PATH_JS ?>Componentes/Tabela.js"></script>
+<script src="<?= PATH_JS ?>Componentes/Modal.js"></script>
 
 <?php if ($this->getViewVar()['nameController'] === 'ImpressaoController' && (empty($this->getViewVar()['nameAction']) || $this->getViewVar()['nameAction'] == 'index')) { ?>
     <script src="<?= PATH_JS ?>Impressao/Index.js"></script>

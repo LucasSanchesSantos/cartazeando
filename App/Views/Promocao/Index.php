@@ -49,7 +49,7 @@
                     </td>
                     <td class="text-center align-middle">
                         <div class="d-flex justify-content-center">
-                            <a class="btn btn-danger" href="<?= URL ?>promocao/deletar?id=<?= $promocao['id'] ?>">
+                            <a class="btn btn-danger delete-button" href="<?= URL ?>promocao/deletar?id=<?= $promocao['id'] ?>">
                                 <i class="bi bi-trash3-fill"></i>
                             </a>
                         </div>
@@ -59,3 +59,22 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="confirmacaoExclusaoModal" tabindex="-1" aria-labelledby="confirmacaoExclusaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmacaoExclusaoModalLabel">Confirmar exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente fazer essa exclusão?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="confirmarExclusao" class="btn btn-danger">Confirmar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
