@@ -67,11 +67,14 @@ class ImpressaoController extends Controller
 
             $filtros = [
                 'idFilial' => intval($idFilial),
+                'idFilial2' => intval($idFilial),
                 'id_promocao' => is_null($idPromocao) ? null : strval($idPromocao),
+                'id_promocao2' => is_null($idPromocao) ? null : strval($idPromocao),
                 'tipoPromocao' => is_null($tipoPromocao) ? null : strval($tipoPromocao),
                 'idDepartamento' => is_null($idDepartamento) ? null : intval($idDepartamento),
                 'idSubdepartamento' => is_null($idSubdepartamento) ? null : intval($idSubdepartamento),
-                'idProduto' => is_null($idProduto) ? null : intval($idProduto)
+                'idProduto' => is_null($idProduto) ? null : intval($idProduto),
+                'idProduto2' => is_null($idProduto) ? null : intval($idProduto)
             ];
 
             $produtosComPromocoesAgrupadas = $this->getProdutosComPromocoesAgrupadas($filtros);
