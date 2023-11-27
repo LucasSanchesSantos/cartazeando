@@ -44,11 +44,20 @@ function atualizarCards(idFilialSessao) {
 
     $('#modalFiltro').modal('hide');
 
+    let validacaoFiltroPromocao = '';
+
+    if(filtroPromocao == undefined || filtroPromocao == null || filtroPromocao.length === 0){
+        validacaoFiltroPromocao = 0;
+    }else{
+        validacaoFiltroPromocao = 10000000;
+    }
+
     let parametros = {
         "idFilial": idFilial,
         "promocao": filtroPromocao,
         // "idDepartamento": filtroCategoria,
         // "idSubdepartamento": filtroSubcategoria,
+        "validacaoFiltroPromocao": validacaoFiltroPromocao,
         "idProduto": filtroIdProduto
     };
 

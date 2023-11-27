@@ -38,44 +38,12 @@ class ProdutoDAO extends DAO
 
     private function getSqlProdutosPorFiltros(array $parametros): string
     {
-        $clausulaIdPromocao = empty($parametros['id_promocao']) ? '' : 'AND p.id = :id_promocao';
-        $clausulaIdPromocao2 = !empty($parametros['id_promocao']) ? '' : 'AND p.id >= 1000000000000002';
-        // $clausulaTipoPromocao = empty($parametros['tipoPromocao']) ? '' : 'AND tipo = :tipoPromocao';
-        // $clausulaIdDepartamento = empty($parametros['idDepartamento']) ? '' : 'AND id_departamento = :idDepartamento';
-        // $clausulaIdSubdepartamento = empty($parametros['idSubdepartamento']) ? '' : 'AND id_sub_departamento = :idSubdepartamento';
-        $clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND p.id_produto = :idProduto';
-        $clausulaIdProduto2 = empty($parametros['idProduto']) ? '' : 'AND p.id_produto = :idProduto2';
-        
+        $clausulaIdPromocao = empty($parametros['promocao']) ? '' : 'AND p.id = :id_promocao';
+        $clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND pm.id_produto = :idProduto';
+
+        //$clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND pm.id_produto = :idProduto';
+
         return "SELECT 
-                    p.*
-                    ,p.id_cor          as id_grade_x
-                    ,p.id_voltagem     as id_grade_y
-                    ,c.descricao       as cor
-                    ,v.descricao       as voltagem
-                    ,CURRENT_DATE()    as data_inicial
-                    ,DATE_ADD(CURRENT_DATE() , INTERVAL 30 DAY)as data_final
-                    ,rp.parcela_inicio as prazo_inicial
-                    ,rp.parcela_fim    as prazo_final
-                    ,p.preco_venda     as preco_a_prazo
-                    ,case when rp.parcela_inicio = 0 then 'Sem Entrada' else 'Com Entrada' end as tipo_prazo_promocao
-                    ,tp.descricao      as tipo
-                    ,f.id 		       as id_filial
-                    ,'PREÇO PADRÃO'    as promocao
-                    ,0   	           as id_promocao
-                    ,concat('http://localhost:8082/',p.caminho_imagem) as imagem
-                from produtonew p 
-                left join cor c       on c.id = p.id_cor 
-                left join voltagem v  on v.id = p.id_voltagem 
-                left join filial f on true
-                left join regra_parcelamento_padrao rp on true
-                left join tipo_pagamento tp on tp.id = rp.id_tipo_pagamento 
-                where f.id = :idFilial
-                $clausulaIdPromocao2 
-                $clausulaIdProduto
-
-                union
-
-                SELECT 
                     p.*
                     ,p.id_cor          as id_grade_x
 	                ,p.id_voltagem     as id_grade_y
@@ -99,10 +67,39 @@ class ProdutoDAO extends DAO
                 left join tipo_pagamento tp on tp.id = id_tipo_pagamento 
                 where 
                     pm.id_situacao = 1
-                    and id_filial = :idFilial2
-                    and current_date() between pm.data_inicio and pm.data_fim   
-                    $clausulaIdProduto2
+                    and id_filial = :idFilial
+                    and current_date() between pm.data_inicio and pm.data_fim
                     $clausulaIdPromocao
-                    ";
+                    $clausulaIdProduto
+                    
+                union
+
+                SELECT 
+                    p.*
+                    ,p.id_cor          as id_grade_x
+                    ,p.id_voltagem     as id_grade_y
+                    ,c.descricao       as cor
+                    ,v.descricao       as voltagem
+                    ,CURRENT_DATE()    as data_inicial
+                    ,DATE_ADD(CURRENT_DATE() , INTERVAL 30 DAY)as data_final
+                    ,rp.parcela_inicio as prazo_inicial
+                    ,rp.parcela_fim    as prazo_final
+                    ,p.preco_venda     as preco_a_prazo
+                    ,case when rp.parcela_inicio = 0 then 'Sem Entrada' else 'Com Entrada' end as tipo_prazo_promocao
+                    ,tp.descricao      as tipo
+                    ,f.id 		       as id_filial
+                    ,'PREÇO PADRÃO'    as promocao
+                    ,0   	           as id_promocao
+                    ,concat('http://localhost:8082/',p.caminho_imagem) as imagem
+                from produtonew p 
+                left join cor c       on c.id = p.id_cor 
+                left join voltagem v  on v.id = p.id_voltagem 
+                left join filial f on true
+                left join regra_parcelamento_padrao rp on true
+                left join tipo_pagamento tp on tp.id = rp.id_tipo_pagamento 
+                where 
+                f.id = :idFilial2
+                and p.id >= :validacaoFiltroPromocao
+                ";
     }
 }

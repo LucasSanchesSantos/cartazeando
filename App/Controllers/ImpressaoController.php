@@ -74,7 +74,8 @@ class ImpressaoController extends Controller
                 'idDepartamento' => is_null($idDepartamento) ? null : intval($idDepartamento),
                 'idSubdepartamento' => is_null($idSubdepartamento) ? null : intval($idSubdepartamento),
                 'idProduto' => is_null($idProduto) ? null : intval($idProduto),
-                'idProduto2' => is_null($idProduto) ? null : intval($idProduto)
+                'idProduto2' => is_null($idProduto) ? null : intval($idProduto),
+                'validacaoFiltroPromocao' =>  intval($_GET['validacaoFiltroPromocao'])
             ];
 
             $produtosComPromocoesAgrupadas = $this->getProdutosComPromocoesAgrupadas($filtros);
