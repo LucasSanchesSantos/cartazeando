@@ -7,7 +7,12 @@ use App\Abstractions\Entity;
 class Impressoes extends Entity
 {
     protected int $id;
-    protected int $idPromocao;
+    protected string $idPromocao;
+    protected int $idProduto;
+    protected int $idGradeX;
+    protected int $idGradeY;
+    protected int $idTipoPagamento;
+    protected float $precoAPrazo;
     protected int $idFilial;
     protected int $idUsuario;
     protected string $dataHoraImpressao;
@@ -16,6 +21,11 @@ class Impressoes extends Entity
     {
         $this->setId($impressoes['id']);
         $this->setIdPromocao($impressoes['id_promocao']);
+        $this->setIdProduto($impressoes['id_produto']);
+        $this->setIdGradeX($impressoes['id_grade_x']);
+        $this->setIdGradeY($impressoes['id_grade_y']);
+        $this->setIdTipoPagamento($impressoes['id_tipo_pagamento']);
+        $this->setPrecoAPrazo($impressoes['preco_a_prazo']);
         $this->setIdFilial($impressoes['id_filial']);
         $this->setIdUsuario($impressoes['id_usuario']);
         $this->setDataHoraImpressao($impressoes['data_hora_impressao']);
@@ -42,6 +52,66 @@ class Impressoes extends Entity
     private function setIdPromocao(int $idPromocao): self
     {
         $this->idPromocao = $idPromocao;
+
+        return $this;
+    }
+
+    public function getIdProduto(): int
+    {
+        return $this->idProduto;
+    }
+
+    private function setIdProduto(int $idProduto): self
+    {
+        $this->idProduto = $idProduto;
+
+        return $this;
+    }
+    
+    public function getIdGradeX(): int
+    {
+        return $this->idGradeX;
+    }
+
+    private function setIdGradeX(int $idGradeX): self
+    {
+        $this->idGradeX = $idGradeX;
+
+        return $this;
+    }
+    
+    public function getIdGradeY(): int
+    {
+        return $this->idGradeY;
+    }
+
+    private function setIdGradeY(int $idGradeY): self
+    {
+        $this->idGradeY = $idGradeY;
+
+        return $this;
+    }
+    
+    public function getIdTipoPagamento(): int
+    {
+        return $this->idTipoPagamento;
+    }
+
+    private function setIdTipoPagamento(int $idTipoPagamento): self
+    {
+        $this->idTipoPagamento = $idTipoPagamento;
+
+        return $this;
+    }
+    
+    public function getPrecoAPrazo(): float
+    {
+        return $this->precoAPrazo;
+    }
+
+    private function setPrecoAPrazo(float $precoAPrazo): self
+    {
+        $this->precoAPrazo = $precoAPrazo;
 
         return $this;
     }

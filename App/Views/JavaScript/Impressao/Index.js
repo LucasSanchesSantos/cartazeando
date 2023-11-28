@@ -144,20 +144,23 @@ function alterarPromocao(idElemento) {
 
     dadosProdutoPromocao.id_promocao_produto_grade = dadosPromocao['id_promocao_produto_grade'];
     dadosProdutoPromocao.promocao = dadosPromocao['promocao'];
+    //dadosProdutoPromocao.id_promocao = dadosPromocao['id_promocao'];
     dadosProdutoPromocao.tipo = dadosPromocao['tipo'];
-    dadosProdutoPromocao.valor = parseFloat(dadosPromocao['valor'].replace(",", "."));
+    dadosProdutoPromocao.valor = parseFloat(dadosPromocao['valor']);
     dadosProdutoPromocao.prazo_inicial = dadosPromocao['prazo_inicial'];
     dadosProdutoPromocao.prazo_final = dadosPromocao['prazo_final'];
 
     if (dadosProdutoPromocao.tipo == 'A Vista') {
-        dadosProdutoPromocao.preco_partida = parseFloat(dadosPromocao['valor'].replace(",", "."));
+        dadosProdutoPromocao.preco_partida = parseFloat(dadosPromocao['valor']);
     } else {
-        dadosProdutoPromocao.preco_a_prazo = parseFloat(dadosPromocao['valor'].replace(",", "."));
+        dadosProdutoPromocao.preco_a_prazo = parseFloat(dadosPromocao['valor']);
     }
 
     produtoPromocao.setAttribute('dados', JSON.stringify(dadosProdutoPromocao));
 
     textoPromocao.innerHTML = `${dadosPromocao['tipo']}: <small>R$</small> ${dadosPromocao['valor']}`;
+    //console.log(dadosPromocao['id_promocao']);
+
 }
 
 function alterarDe(idElemento) {
@@ -205,7 +208,6 @@ function enviarDadosParaRota(dados) {
         success: function(response) {
             console.log('Dados enviados com sucesso:', dados);
 
-            // Aqui você pode realizar ações adicionais, se necessário
         },
         error: function(error) {
             console.error('Erro ao enviar dados:', dados);
@@ -550,6 +552,7 @@ function getDivPromocao(produto, idElemento) {
         option.setAttribute('value', JSON.stringify({
             "id_promocao_produto_grade": promocao['id_promocao_produto_grade'],
             "promocao": promocao['promocao'],
+            //"id_promocao": promocao['id_promocao'],
             "tipo": promocao['tipo'],
             "valor": promocao['valor'],
             "prazo_inicial": promocao['prazo_inicial'],

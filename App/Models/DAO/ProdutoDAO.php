@@ -54,7 +54,8 @@ class ProdutoDAO extends DAO
                     ,pm.parcela_inicio as prazo_inicial
                     ,pm.parcela_fim    as prazo_final
                     ,pm.valor_promocao as preco_a_prazo
-                    ,'Sem Entrada'     as tipo_prazo_promocao
+                    ,case when pm.parcela_inicio = 0 then 'Sem Entrada' else 'Com Entrada' end as tipo_prazo_promocao
+                    ,tp.id             as id_tipo_pagamento
                     ,tp.descricao      as tipo
                     ,pm.id_filial      as id_filial
                     ,pm.descricao      as promocao
@@ -71,7 +72,7 @@ class ProdutoDAO extends DAO
                     and current_date() between pm.data_inicio and pm.data_fim
                     $clausulaIdPromocao
                     $clausulaIdProduto
-                    
+
                 union
 
                 SELECT 
@@ -86,6 +87,7 @@ class ProdutoDAO extends DAO
                     ,rp.parcela_fim    as prazo_final
                     ,p.preco_venda     as preco_a_prazo
                     ,case when rp.parcela_inicio = 0 then 'Sem Entrada' else 'Com Entrada' end as tipo_prazo_promocao
+                    ,tp.id             as id_tipo_pagamento
                     ,tp.descricao      as tipo
                     ,f.id 		       as id_filial
                     ,'PREÇO PADRÃO'    as promocao
