@@ -57,5 +57,30 @@ class ImpressoesController extends Controller
         $this->render('RelatorioImpressoes/index');
     }
 
-  
+    public function RealorioQuantidade(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+
+        self::setViewParam('impressoes', $impressaoDAO->listarRelatorioQuantidade());
+
+        $this->render('RelatorioImpressoes/RealorioQuantidade');
+    }
+
+    public function RealorioProduto(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+
+        self::setViewParam('impressoes', $impressaoDAO->listarRelatorioProduto());
+
+        $this->render('RelatorioImpressoes/RealorioProduto');
+    }
+
+    public function ImpressoesPorFilial(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+
+        self::setViewParam('impressoes', $impressaoDAO->listarImpressoesPorFilial());
+
+        $this->render('RelatorioImpressoes/ImpressoesPorFilial');
+    }
 }

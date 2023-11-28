@@ -31,49 +31,80 @@
                 </div>
                 <div>
                     <ul class="navbar-nav justify-content-end flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>impressao/index"><i class="text-dark-blue bi bi-printer me-2"></i>Impressão</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>impressaoPersonalizada/index"><i class="text-dark-blue bi bi-printer me-2"></i>Impressão personalizada</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 border-bottom" aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#submenuImpressoes" aria-expanded="false">
+                            <i class="text-dark-blue bi bi-printer me-2"></i>Impressões
+                        </a>
+                        <ul class="collapse list-unstyled ms-4" id="submenuImpressoes">
+                            <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>impressao/index"><i class="text-dark-blue bi bi-printer me-2"></i>Impressão</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>impressaoPersonalizada/index"><i class="text-dark-blue bi bi-printer me-2"></i>Impressão personalizada</a>
+                            </li>
+                            <!-- Adicione outros itens de submenu aqui, se necessário -->
+                        </ul>
+                    </li>
+
                         <?php
                             if ($isAdministrativo) {
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>usuario/index"><i class="text-dark-blue bi bi-person-gear me-2"></i>Usuários</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#submenuManutencoes" aria-expanded="false">
+                                    <i class="text-dark-blue bi bi-tools me-2"></i>Manutenções
+                                </a>
+                                <ul class="collapse list-unstyled ms-4" id="submenuManutencoes">
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>usuario/index"><i class="text-dark-blue bi bi-person-gear me-2"></i>Usuários</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoPagamento/index"><i class="text-dark-blue bi bi-gear-fill me-2"></i>Tipos de pagamentos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>filial/index"><i class="text-dark-blue bi bi-shop me-2"></i>Filiais</a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>tipoPagamento/index"><i class="text-dark-blue bi bi-gear-fill me-2"></i>Tipos de pagamentos</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#submenuProdutos" aria-expanded="false">
+                                    <i class="text-dark-blue bi bi-box-arrow-in-down me-2"></i>Produtos
+                                </a>
+                                <ul class="collapse list-unstyled ms-4" id="submenuProdutos">
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>ProdutoCadastro/index"><i class="text-dark-blue bi bi-tv me-2"></i>Produto</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Cor/index"><i class="text-dark-blue bi bi-palette me-2"></i>Cor</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Voltagem/index"><i class="text-dark-blue bi bi-lightning me-2"></i>Voltagem</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Promocao/index"><i class="text-dark-blue bi bi-tags-fill me-2"></i>Promoções</a>
+                                    </li>
+                                </ul>
                             </li>
 
-                            <!-- <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="tipoCartaz/index"><i class="text-dark-blue bi bi-file-earmark-minus me-2"></i>Tipo de cartaz</a>
-                            </li> -->
-
+                            
                             <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>filial/index"><i class="text-dark-blue bi bi-shop me-2"></i>Filiais</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="Empresa/index"><i class="text-dark-blue bi bi-building me-2"></i>Empresa</a>
-                            </li> -->
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Cor/index"><i class="text-dark-blue bi bi-palette me-2"></i>Cor</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Voltagem/index"><i class="text-dark-blue bi bi-lightning me-2"></i>Voltagem</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>ProdutoCadastro/index"><i class="text-dark-blue bi bi-tv me-2"></i>Produto</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Promocao/index"><i class="text-dark-blue bi bi-tags-fill me-2"></i>Promoções</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/index"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Relatorio de impressoes</a>
+                                <a class="nav-link px-3 border-bottom" aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#submenuRelatorios" aria-expanded="false">
+                                    <i class="text-dark-blue bi bi-file-earmark-bar-graph me-2"></i>Relatórios
+                                </a>
+                                <ul class="collapse list-unstyled ms-4" id="submenuRelatorios">
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/index"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões geral</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/RealorioQuantidade"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por promoção</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/RealorioProduto"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por produto</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/ImpressoesPorFilial"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por filial</a>
+                                    </li>
+                                </ul>
                             </li>
                         <?php
                             }

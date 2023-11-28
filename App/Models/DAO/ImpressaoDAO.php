@@ -102,6 +102,7 @@ class ImpressaoDAO extends DAO
             left join tipo_pagamento t on p.id_tipo_pagamento = t.id
             WHERE
                 id_filial = :idFilial
+                and current_date() between p.data_inicio and p.data_fim
             GROUP BY
             descricao";
     }
