@@ -38,8 +38,9 @@ class ProdutoDAO extends DAO
 
     private function getSqlProdutosPorFiltros(array $parametros): string
     {
-        $clausulaIdPromocao = empty($parametros['promocao']) ? '' : 'AND p.id = :id_promocao';
-        $clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND pm.id_produto = :idProduto';
+        $clausulaIdPromocao = empty($parametros['promocao']) ? '' : ' AND p.id = :id_promocao';
+        $clausulaIdProduto = empty($parametros['idProduto']) ? '' : ' AND pm.id_produto = :idProduto';
+        $clausulaIdProduto2 = empty($parametros['idProduto']) ? '' : ' AND p.id_produto = :idProduto2';
 
         //$clausulaIdProduto = empty($parametros['idProduto']) ? '' : 'AND pm.id_produto = :idProduto';
 
@@ -101,7 +102,8 @@ class ProdutoDAO extends DAO
                 left join tipo_pagamento tp on tp.id = rp.id_tipo_pagamento 
                 where 
                 f.id = :idFilial2
-                and p.id >= :validacaoFiltroPromocao
+                and 0 = :validacaoFiltroPromocao
+                $clausulaIdProduto2
                 ";
     }
 }
