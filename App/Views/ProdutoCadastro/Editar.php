@@ -1,15 +1,15 @@
-<h3 class="text-center mb-4"><i class="bi bi-person-gear"></i> Produto</h3>
+<h3 class="text-center mb-4"><i class="bi bi-tv me-2"></i> Produto</h3>
 
 <form action="<?= URL ?>produtoCadastro/editar" method="post" enctype="multipart/form-data">
     <input type="hidden" id="id" name="id" value=<?= !empty($_GET['id']) ? intval($_GET['id']) : intval($produtoCadastro['id']) ?>>
     
         <div class="mb-3">
             <label class="form-label">Código do produto</label>
-            <input type="text" class="form-control" id="id_produto" name="id_produto" value="<?= $this->viewVar['produtoCadastro']['id_produto'] ?>" required>
+            <input type="text" class="form-control" id="id_produto" name="id_produto" value="<?= $this->viewVar['produtoCadastro']['id_produto'] ?>" required disabled>
         </div>
         <div class="mb-3">
             <label class="form-label">Cor</label>
-            <select class="form-select" id="id_cor" name="id_cor" required>
+            <select class="form-select" id="id_cor" name="id_cor" required disabled> 
             <?php
                     foreach ($this->viewVar['cor'] as $cor) {
                 ?>
@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Voltagem</label>
-            <select class="form-select" id="id_voltagem" name="id_voltagem" required>
+            <select class="form-select" id="id_voltagem" name="id_voltagem" required disabled>
             <?php
                 foreach ($this->viewVar['voltagem'] as $voltagem) {
             ?>

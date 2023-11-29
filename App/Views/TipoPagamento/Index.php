@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between mb-4">
-    <h3 class="text-center"><i class="bi bi-person-gear"></i> Tipo de pagamentos</h3>
-    <a class="btn btn-dark-blue" href="<?= URL ?>tipoPagamento/cadastro"><i class="bi bi-person-add"></i> Novo tipo de pagamento</a>
+    <h3 class="text-center"><i class="bi bi-gear-fill me-2"></i> Tipo de pagamentos</h3>
+    <a class="btn btn-dark-blue" href="<?= URL ?>tipoPagamento/cadastro"><i class="bi bi-gear-fill me-2"></i> Novo tipo de pagamento</a>
 </div>
 
 <div class="table-responsive mt-2">

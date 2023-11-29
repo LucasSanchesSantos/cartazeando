@@ -1,11 +1,11 @@
-<h3 class="text-center mb-4"><i class="bi bi-person-gear"></i> Produto</h3>
+<h3 class="text-center mb-4"><i class="bi bi-tags-fill me-2"></i> Promoção</h3>
 
 <form action="<?= URL ?>promocao/editar" method="post">
     <input type="hidden" id="id" name="id" value=<?= !empty($_GET['id']) ? intval($_GET['id']) : intval($promocao['id']) ?>>
     
         <div class="mb-3">
             <label class="form-label">Id Promoção</label>
-            <input type="text" class="form-control" id="id" disabled="" name="id" value="<?= $this->viewVar['promocao']['id'] ?>" required>
+            <input type="text" class="form-control" id="id" disabled="" name="id" value="<?= $this->viewVar['promocao']['id'] ?>" required disabled>
         </div>
         <div class="mb-3">
             <label class="form-label">Descricao</label>

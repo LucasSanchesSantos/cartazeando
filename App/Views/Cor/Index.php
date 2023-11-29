@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between mb-4">
-    <h3 class="text-center"><i class="bi bi-person-gear"></i> Cores</h3>
-    <a class="btn btn-dark-blue" href="<?= URL ?>cor/cadastro"><i class="bi bi-person-add"></i> Cadastrar nova cor</a>
+    <h3 class="text-center"><i class="bi bi-palette me-2"></i> Cores</h3>
+    <a class="btn btn-dark-blue" href="<?= URL ?>cor/cadastro"><i class="bi bi-palette me-2"></i> Cadastrar nova cor</a>
 </div>
 
 <div class="table-responsive mt-2">

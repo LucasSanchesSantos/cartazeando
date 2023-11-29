@@ -1,4 +1,4 @@
-<h3 class="text-center mb-4"><i class="bi bi-person-add"></i> Filial</h3>
+<h3 class="text-center mb-4"><i class="bi bi-shop me-2"></i> Filial</h3>
 
 <form action="<?= URL ?>filial/cadastrar" method="post">
     

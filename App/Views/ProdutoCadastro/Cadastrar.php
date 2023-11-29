@@ -1,4 +1,4 @@
-<h3 class="text-center mb-4"><i class="bi bi-person-add"></i> Novo produto</h3>
+<h3 class="text-center mb-4"><i class="bi bi-tv me-2"></i> Novo produto</h3>
 
 <form action="<?= URL ?>produtoCadastro/cadastrar" method="post" enctype="multipart/form-data">
     <div class="mb-3">

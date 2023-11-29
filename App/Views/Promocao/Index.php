@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between mb-4">
-    <h3 class="text-center"><i class="bi bi-person-gear"></i> Promoções</h3>
-    <a class="btn btn-dark-blue" href="<?= URL ?>promocao/cadastro"><i class="bi bi-person-add"></i> Nova promoção</a>
+    <h3 class="text-center"><i class="bi bi-tags-fill me-2"></i> Promoções</h3>
+    <a class="btn btn-dark-blue" href="<?= URL ?>promocao/cadastro"><i class="bi bi-tags-fill me-2"></i> Nova promoção</a>
 </div>
 
 <div class="table-responsive mt-2">

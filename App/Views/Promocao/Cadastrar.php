@@ -1,4 +1,4 @@
-<h3 class="text-center mb-4"><i class="bi bi-person-add"></i> Novo produto</h3>
+<h3 class="text-center mb-4"><i class="bi bi-tags-fill me-2"></i> Novo produto</h3>
 
 <form action="<?= URL ?>promocao/cadastrar" method="post">
     <div class="mb-3">
@@ -6,8 +6,10 @@
         <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite o nome da promoção" required>
     </div>
     <div class="mb-3">
-        <label for="id_produto" class="form-label">Código do produto</label>
+        <label for="id_produto" class="form-label">Produto</label>
         <select class="form-select" id="id_produto" name="id_produto" required>
+            <option value="">Selecione</option>
+
             <?php
                     foreach ($this->viewVar['produtoCadastro'] as $produto) {
                 ?>

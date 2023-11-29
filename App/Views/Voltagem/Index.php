@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between mb-4">
-    <h3 class="text-center"><i class="bi bi-person-gear"></i> Voltagem</h3>
-    <a class="btn btn-dark-blue" href="<?= URL ?>voltagem/cadastro"><i class="bi bi-person-add"></i> Nova voltagem</a>
+    <h3 class="text-center"><i class="bi bi-lightning me-2"></i> Voltagem</h3>
+    <a class="btn btn-dark-blue" href="<?= URL ?>voltagem/cadastro"><i class="bi bi-lightning me-2"></i> Nova voltagem</a>
 </div>
 
 <div class="table-responsive mt-2">
