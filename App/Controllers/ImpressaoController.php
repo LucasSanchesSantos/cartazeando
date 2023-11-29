@@ -30,7 +30,7 @@ class ImpressaoController extends Controller
         $impressaoPersonalizadaDAO = new ImpressaoPersonalizadaDAO();
 
         self::setViewParam('tiposCartazes', $impressaoPersonalizadaDAO->getTiposCartazes());
-        self::setViewParam('filiais', $impressaoDAO->getFiliais());
+        self::setViewParam('filiais', $impressaoDAO->getFiliais2());
         self::setViewParam('promocoes', $impressaoDAO->getPromocoes($idFilialSelecionada));
         self::setViewParam('categorias', $impressaoDAO->getCategorias());
         self::setViewParam('subcategorias', $impressaoDAO->getSubcategorias());

@@ -18,7 +18,7 @@
                                 foreach ($this->viewVar['filiais'] as $filial) {
                             ?>
                                 <option value=<?= $filial['id_filial'] ?> <?= $filial['id_filial'] == $usuario['id_filial_selecionada'] ? 'selected' : '' ?>>
-                                    (<?= $filial['id_empresa'] ?>) FL <?= $filial['numero_filial'] ?> - <?= $filial['cidade'] ?>
+                                    FL <?= $filial['numero_filial'] ?> - <?= $filial['cidade'] ?>
                                 </option>
                             <?php
                                 }

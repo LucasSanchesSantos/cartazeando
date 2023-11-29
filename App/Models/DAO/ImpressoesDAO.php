@@ -114,7 +114,7 @@ class ImpressoesDAO extends DAO
     private function getSqlDadosRelatorioQuantidade(): string
     {
         return "SELECT
-                    case when i.id_promocao = 0 then 'PREÇO PADRÃO' else CONCAT(i.id_promocao,' - ', p.descricao) end as promocao
+                    case when i.id_promocao = 0 then 'PREÇO PADRÃO' else p.descricao end as promocao
                     ,CONCAT(f.numero,' - ', f.cidade) as filial
                     ,DATE(i.data_hora_impressao) as data_impressao
                     ,count(i.id_promocao) as quantidade_impressoes
@@ -306,7 +306,7 @@ class ImpressoesDAO extends DAO
         $clausulaData = empty($parametros['dataInicio']) ? '' : ' AND date(i.data_hora_impressao) between :dataInicio and :dataFim';
 
         return "SELECT
-                    case when i.id_promocao = 0 then 'PREÇO PADRÃO' else CONCAT(i.id_promocao,' - ', p.descricao) end as promocao
+                    case when i.id_promocao = 0 then 'PREÇO PADRÃO' else p.descricao end as promocao
                     ,CONCAT(f.numero,' - ', f.cidade) as filial
                     ,DATE(i.data_hora_impressao) as data_impressao
                     ,count(i.id_promocao) as quantidade_impressoes

@@ -18,6 +18,19 @@ class ImpressaoDAO extends DAO
 
         return $resultado;
     }
+
+    public function getFiliais2(): ?array
+    {
+        $sql = $this->getSqlFiliais2();
+
+        $resultado = $this->selectWithBindValue($sql);
+
+        if (!$resultado) {
+            return null;
+        }
+
+        return $resultado;
+    }
     
     public function getPromocoes(int $idFilial): ?array
     {
@@ -89,6 +102,19 @@ class ImpressaoDAO extends DAO
                 cidade
             ORDER BY
                 id_empresa,
+                id_filial";
+    }
+
+
+    private function getSqlFiliais2(): string
+    {
+        return "SELECT
+                id as id_filial,
+                numero as numero_filial,
+                cidade
+            FROM
+                filial
+            ORDER BY
                 id_filial";
     }
 
