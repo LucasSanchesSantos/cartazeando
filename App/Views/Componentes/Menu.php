@@ -85,7 +85,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             
                             <li class="nav-item">
                                 <a class="nav-link px-3 border-bottom" aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#submenuRelatorios" aria-expanded="false">
@@ -93,13 +92,13 @@
                                 </a>
                                 <ul class="collapse list-unstyled ms-4" id="submenuRelatorios">
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/index"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões geral</a>
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/index"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Relatório detalhado</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/RealorioQuantidade"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por promoção</a>
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/RelatorioQuantidade"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por promoção</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/RealorioProduto"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por produto</a>
+                                        <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/RelatorioProduto"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por produto</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link px-3 border-bottom" aria-current="page" href="<?= URL ?>Impressoes/ImpressoesPorFilial"><i class="text-dark-blue bi bi-file-earmark-spreadsheet me-2"></i>Impressões por filial</a>

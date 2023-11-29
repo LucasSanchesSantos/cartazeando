@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Abstractions\Controller;
+use App\Models\DAO\FilialDAO;
 use App\Models\DAO\ImpressoesDAO;
+use App\Models\DAO\ProdutoCadastroDAO;
+use App\Models\DAO\PromocaoDAO;
 use App\Models\Entidades\Impressoes;
 
 class ImpressoesController extends Controller
@@ -51,35 +54,183 @@ class ImpressoesController extends Controller
     public function index(): void
     {
         $impressaoDAO = new ImpressoesDAO();
-
+        $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
+        
         self::setViewParam('impressoes', $impressaoDAO->listar());
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
 
         $this->render('RelatorioImpressoes/index');
     }
 
-    public function RealorioQuantidade(): void
+    public function Filtrar(): void
     {
         $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
+
+        $idFilial = $_POST['idFilial'] ?: null;
+        // $idPromocao = $_POST['idPromocao'] ?: null;
+        $idProduto = $_POST['idProduto'] ?: null;
+        $dataInicio = $_POST['dataInicio'] ?: null;
+        $dataFim = $_POST['dataFim'] ?: null;
+
+
+        $filtros = [
+            'idFilial' => is_null($idFilial) ? null : strval($idFilial),
+            // 'idPromocao' => is_null($idPromocao) ? null : strval($idPromocao),
+            'idProduto' => is_null($idProduto) ? null : strval($idProduto),
+            'dataInicio' => is_null($dataInicio) ? null : strval($dataInicio),
+            'dataFim' => is_null($dataFim) ? null : strval($dataFim),
+        ];
+
+        self::setViewParam('impressoes', $impressaoDAO->Filtrar($filtros));
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
+
+        $this->render('RelatorioImpressoes/Index');
+    }
+
+    public function RelatorioQuantidade(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+        $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
 
         self::setViewParam('impressoes', $impressaoDAO->listarRelatorioQuantidade());
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
 
         $this->render('RelatorioImpressoes/RealorioQuantidade');
     }
 
-    public function RealorioProduto(): void
+    public function RelatorioProduto(): void
     {
         $impressaoDAO = new ImpressoesDAO();
+        $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
 
         self::setViewParam('impressoes', $impressaoDAO->listarRelatorioProduto());
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
 
-        $this->render('RelatorioImpressoes/RealorioProduto');
+        $this->render('RelatorioImpressoes/RelatorioProduto');
+    }
+
+    public function FiltrarRelatorioQuantidade(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
+
+        $idFilial = $_POST['idFilial'] ?: null;
+        // $idPromocao = $_POST['idPromocao'] ?: null;
+        $idProduto = $_POST['idProduto'] ?: null;
+        $dataInicio = $_POST['dataInicio'] ?: null;
+        $dataFim = $_POST['dataFim'] ?: null;
+
+
+        $filtros = [
+            'idFilial' => is_null($idFilial) ? null : strval($idFilial),
+            // 'idPromocao' => is_null($idPromocao) ? null : strval($idPromocao),
+            'idProduto' => is_null($idProduto) ? null : strval($idProduto),
+            'dataInicio' => is_null($dataInicio) ? null : strval($dataInicio),
+            'dataFim' => is_null($dataFim) ? null : strval($dataFim),
+        ];
+
+        self::setViewParam('impressoes', $impressaoDAO->FiltrarRelatorioQuantidade($filtros));
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
+
+        $this->render('RelatorioImpressoes/RealorioQuantidade');
     }
 
     public function ImpressoesPorFilial(): void
     {
         $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
 
         self::setViewParam('impressoes', $impressaoDAO->listarImpressoesPorFilial());
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
+
+        $this->render('RelatorioImpressoes/ImpressoesPorFilial');
+    }
+
+    public function FiltrarRelatorioProduto(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
+
+        $idFilial = $_POST['idFilial'] ?: null;
+        // $idPromocao = $_POST['idPromocao'] ?: null;
+        $idProduto = $_POST['idProduto'] ?: null;
+        $dataInicio = $_POST['dataInicio'] ?: null;
+        $dataFim = $_POST['dataFim'] ?: null;
+
+
+        $filtros = [
+            'idFilial' => is_null($idFilial) ? null : strval($idFilial),
+            // 'idPromocao' => is_null($idPromocao) ? null : intval($idPromocao),
+            'idProduto' => is_null($idProduto) ? null : strval($idProduto),
+            'dataInicio' => is_null($dataInicio) ? null : strval($dataInicio),
+            'dataFim' => is_null($dataFim) ? null : strval($dataFim),
+        ];
+
+        self::setViewParam('impressoes', $impressaoDAO->FiltrarRelatorioProduto($filtros));
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
+
+        $this->render('RelatorioImpressoes/RelatorioProduto');
+    }
+
+
+    public function FiltrarImpressoesPorFilial(): void
+    {
+        $impressaoDAO = new ImpressoesDAO();
+        $filialDAO = new FilialDAO();
+        $produto = new ProdutoCadastroDAO();
+        $promocao = new PromocaoDAO();
+
+        $idFilial = $_POST['idFilial'] ?: null;
+        // $idPromocao = $_POST['idPromocao'] ?: null;
+        $idProduto = $_POST['idProduto'] ?: null;
+        $dataInicio = $_POST['dataInicio'] ?: null;
+        $dataFim = $_POST['dataFim'] ?: null;
+
+
+        $filtros = [
+            'idFilial' => is_null($idFilial) ? null : strval($idFilial),
+            // 'idPromocao' => is_null($idPromocao) ? null : intval($idPromocao),
+            'idProduto' => is_null($idProduto) ? null : strval($idProduto),
+            'dataInicio' => is_null($dataInicio) ? null : strval($dataInicio),
+            'dataFim' => is_null($dataFim) ? null : strval($dataFim),
+        ];
+
+        self::setViewParam('impressoes', $impressaoDAO->FiltrarImpressoesPorFilial($filtros));
+        self::setViewParam('filiais', $filialDAO->listar());
+        self::setViewParam('produtos', $produto->listar());
+        self::setViewParam('promocoes', $promocao->listarSoPromocoes());
 
         $this->render('RelatorioImpressoes/ImpressoesPorFilial');
     }

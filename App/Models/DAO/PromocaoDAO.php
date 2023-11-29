@@ -42,6 +42,28 @@ class PromocaoDAO extends DAO
         left join pagamento_entrada pe on pe.id_value = p.parcela_inicio";
     }
 
+    public function listarSoPromocoes(): ?array
+    {
+        $sql = $this->getSqlListarSoPromocao();
+
+        $resultado = $this->selectWithBindValue($sql);
+
+        if (!$resultado) {
+            return null;
+        }
+
+        return $resultado;
+    }
+
+    private function getSqlListarSoPromocao(): string
+    {
+        return 
+        "SELECT
+            p.id as id_promocao
+            ,p.descricao
+        from promocao p";
+    }
+
     public function cadastrar(Promocao $promocao): bool
     {
         $parametros = $promocao->toArray(true);

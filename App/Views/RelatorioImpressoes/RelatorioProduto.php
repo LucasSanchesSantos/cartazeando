@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between mb-4">
-    <h3 class="text-center"><i class="bi bi-printer"></i> Registros de impressões detalhado</h3>
+    <h3 class="text-center"><i class="bi bi-printer"></i> Quantidade de impressões por produto</h3>
 </div>
 
 <button type="button" class="btn btn-dark-blue me-1" data-bs-toggle="modal" data-bs-target="#modalFiltro">
@@ -14,7 +14,7 @@
         <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <form action="<?= URL ?>impressoes/Filtrar" method="post">
+            <form action="<?= URL ?>impressoes/filtrarRelatorioProduto" method="post">
                 <div class="mb-4">
                     <label class="form-label" for="idFilial">Filiais</label>
                     <select class="form-control selectpicker" id="idFilial" title="Selecione" name="idFilial" data-live-search="true">
@@ -24,6 +24,7 @@
                         <?php } ?>
                     </select>
                 </div>
+                
                 <div class="mb-4">
                     <label class="form-label" for="idProduto">Código produto</label>
                     <select class="form-control selectpicker" id="idProduto" title="Selecione" name="idProduto" data-live-search="true">
@@ -58,23 +59,21 @@
     <table class="table table-hover" id="impressoesTable">
         <thead>
             <tr>
-                <th class="text-center align-middle">Promoção</th>
                 <th class="text-center align-middle">Filial</th>
                 <th class="text-center align-middle">Código Prod.</th>
                 <th class="text-center align-middle">Produto</th>
-                <th class="text-center align-middle">Valor Promoção</th>
+                <th class="text-center align-middle">Quantidade de impressões</th>
                 <th class="text-center align-middle">Data impressão</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($this->getViewVar()['impressoes'] as $impressoes) { ?>
                 <tr>
-                    <td class="text-center align-middle"><?= $impressoes['promocao'] ?></td>
                     <td class="text-center align-middle"><?= $impressoes['filial'] ?></td>
                     <td class="text-center align-middle"><?= $impressoes['id_produto'] ?></td>
                     <td class="text-center align-middle"><?= $impressoes['produto'] ?></td>
-                    <td class="text-center align-middle">R$ <?= number_format($impressoes['valor_promocao'], 2, ',', '.')?></td>
-                    <td class="text-center align-middle"><?= date('d/m/Y H:i', strtotime($impressoes['data_impressao'])) ?></td>
+                    <td class="text-center align-middle"><?= $impressoes['quantidade_impressoes'] ?></td>
+                    <td class="text-center align-middle"><?= date('d/m/Y', strtotime($impressoes['data_impressao'])) ?></td>
                 </tr>
             <?php } ?>
         </tbody>
