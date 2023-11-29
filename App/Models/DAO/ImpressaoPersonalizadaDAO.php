@@ -24,10 +24,10 @@ class ImpressaoPersonalizadaDAO extends DAO
     {
         return "SELECT 
                     p.id_produto
-                    ,p.id_grade_x
-                    ,p.id_grade_y 
+                    ,p.id_cor as id_grade_x
+                    ,p.id_voltagem as id_grade_y 
                     ,p.produto
-                FROM produto p 
+                FROM produtonew p 
                 GROUP BY 1,2,3,4";
     }
 
@@ -80,17 +80,18 @@ class ImpressaoPersonalizadaDAO extends DAO
     {
         return 
         "SELECT 
-            id_produto
-            ,id_grade_x
-            ,id_grade_y
-            ,produto
-            ,cor
-            ,voltagem
-        FROM produto
-        WHERE id_produto = CAST(:idProduto AS SIGNED)
-        AND id_grade_x = CAST(:idGradeX AS SIGNED)
-        AND id_grade_y = CAST(:idGradeY AS SIGNED)
-        GROUP BY 1,2,3,4,5,6
+            p.id_produto
+            ,p.id_cor as id_grade_x
+            ,p.id_voltagem as id_grade_y
+            ,p.produto
+            ,c.descricao as cor
+            ,v.descricao as voltagem
+        FROM produtonew p
+        left join cor c on c.id = p.id_cor
+        left join voltagem v on v.id = p.id_voltagem
+        WHERE p.id_produto = CAST(:idProduto AS SIGNED)
+        AND c.id = CAST(:idGradeX AS SIGNED)
+        AND v.id = CAST(:idGradeY AS SIGNED)
         ";
     }
 
@@ -127,33 +128,31 @@ class ImpressaoPersonalizadaDAO extends DAO
     private function getSqlFiliais(): string
     {
         return "SELECT
-                u.id_filial,
-                u.numero_filial,
-                CONCAT(LPAD(u.id_empresa, 2, '0'), '.', LPAD(u.numero_filial, 3, '0'), ' - ', u.cidade) AS filial
-            FROM
-                usuario u
-                LEFT JOIN tipo_formato tf ON tf.id = u.id_tipo_formato
-                LEFT JOIN tipo_permissao tp ON tp.id = u.id_tipo_permissao
-            GROUP BY
-                u.id_filial,
-                u.numero_filial,
-                3";
+                    id as id_filial,
+                    numero as numero_filial,
+                    cidade,
+                    CONCAT(LPAD(numero, 3, '0'), ' - ', cidade) AS filial
+                FROM
+                filial
+                ORDER BY
+                id_filial";
     }
 
     private function getSqlFilialEspecifica(): string
     {
         return "SELECT
-                u.id_filial,
-                u.numero_filial,
-                CONCAT(LPAD(u.id_empresa, 2, '0'), '.', LPAD(u.numero_filial, 3, '0'), ' - ', u.cidade) AS filial
-            FROM
-                usuario u
-            WHERE
-                u.id = :idUsuario
-            GROUP BY
-                u.id_filial,
-                u.numero_filial,
-                3";
+                    f.id as id_filial,
+                    f.numero as numero_filial,
+                    f.cidade,
+                    CONCAT(LPAD(f.numero, 3, '0'), ' - ', f.cidade) AS filial
+                FROM
+                filial f 
+                left join usuario u on u.id_filial = f.id
+                where u.id = :idUsuario
+                ORDER BY
+                id_filial";
+
+                
     }
 
     public function getDadosFilial(string $idfilial): ?array
